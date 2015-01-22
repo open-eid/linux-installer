@@ -1,0 +1,34 @@
+Packaging version 3.10 release notes
+--------------------------------------
+Changes compared to ver 3.9.1
+
+- Fixed packaging of Latvian and Lithuanian CA certificates , the certificates are no longer included in the Estonian DigiDoc3 Client's distribution for Linux platform.
+
+
+Packaging version 3.9.1 release notes
+--------------------------------------
+Changes compared to ver 3.9
+
+Known issues: 
+- Latvian and Lithuanian CA certificates are included in the Estonian DigiDoc3 Client's packaging for Linux platform.
+
+
+Packaging version 3.9 release notes
+--------------------------------------
+Changes compared to ver 3.8.2
+
+- Improved ID-card usage in Google Chrome/Chromium, added automatic configuration script. Acknowledgements. Sertifitseerimiskeskus and RIA thank Lauri Võsandi for his contribution.
+- Improved packaging in Ubuntu environment. Acknowledgements. Sertifitseerimiskeskus and RIA thank Siim Põder for his contribution. 
+- Added packaging support for chrome-token-signing browser extension in Chrome and Chromium browsers in Linux environment.
+- Improved packaging in Ubuntu environment, tarball package now contains a build number.
+- Added new Finnish certificates "VRK CA for Qualified Certificates - G2" or "VRK Gov. CA for Citizen Qualified Certificates - G2" to Finnish certificates' installation packages. 
+- Added Finnish, Latvian, Lithuanian test certificates to test certificates' installation packages. 
+
+
+Packaging version 3.8.0 release notes
+--------------------------------------
+
+- Improved tarball packaging for Linux distributions, separate tarballs are now created automatically for each ID card software component.
+- Changed the process of distributing SK root certificates in case of Linux environment. The certificates are now distributed via Firefox CA certificates package.
+- Fixed Ubuntu Debian packaging errors that were discovered by using Lintian tool.
+- Added support for Ubuntu 13.10. 
