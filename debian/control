@@ -1,0 +1,33 @@
+Source: estonianidcard
+Section: metapackages
+Priority: extra
+Maintainer: ria <info@ria.ee>
+Build-Depends:
+ debhelper (>= 7)
+Standards-Version: 3.9.3
+Homepage: https://www.ria.ee
+
+Package: estonianidcard
+Architecture: all
+Depends:
+ chrome-token-signing,
+ libnss3-tools,
+ esteidfirefoxplugin,
+ esteidpkcs11loader,
+ libdigidoc-tools,
+ libdigidocpp-tools,
+ qdigidoc,
+ qesteidutil,
+ ${misc:Depends}
+Description: Estonian ID card desktop metapackage
+ This package does not contain anything itself, it's a metapackage that will
+ pull in packages required for using the Estonian ID card on the desktop:
+ .
+ esteidfirefoxplugin - Firefox Estonian ID card digital signature plugin
+ esteidpkcs11loader - Firefox PKCS#11 module loader
+ qdigidoc - Estonian ID card digital signature desktop tools
+ qesteidutil - Estonian ID card management desktop utility
+ .
+ Change Log (in English): http://www.id.ee/eng/changelog
+ Muudatuste loetelu (in Estonian): http://www.id.ee/changelog
+ Журнал изменений (in Russian): http://www.id.ee/rus/changelog
