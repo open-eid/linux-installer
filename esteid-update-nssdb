@@ -35,8 +35,8 @@ if [ ! -f $NSSDB/cert9.db ]; then
 fi
 
 echo "Adding Estonian ID-card certificates"
-$CERTUTIL -A -t ",," -n "ESTEID-SK_2007" -i "/usr/share/esteid/certs/ESTEID-SK 2007.crt"
-$CERTUTIL -A -t ",," -n "ESTEID-SK_2011" -i "/usr/share/esteid/certs/ESTEID-SK 2011.crt"
+$CERTUTIL -A -t ",," -n "ESTEID-SK_2007" -i "/usr/share/libdigidoc/ESTEID-SK 2007.crt"
+$CERTUTIL -A -t ",," -n "ESTEID-SK_2011" -i "/usr/share/libdigidoc/ESTEID-SK 2011.crt"
 
 echo "Probing for PKCS#11 library"
 if [ ! -f $PKCS_LIB ]; then
