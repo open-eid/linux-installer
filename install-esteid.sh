@@ -121,7 +121,7 @@ case $distro in
       ;;
    LinuxMint)
       case $release in
-        17)
+        17*)
           make_warn "LinuxMint is not officially supported"
           add_repository trusty
           ;;
