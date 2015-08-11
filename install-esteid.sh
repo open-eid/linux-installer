@@ -54,7 +54,7 @@ test_root() {
 # add the given repository into /etc/apt/sources.list.d
 add_repository() {
   echo "Adding RIA repository to APT sources list (/etc/apt/sources.list.d/ria-repository.list)"
-  echo "# AUTOMATICALLY GENERATED\ndeb https://installer.id.ee/media/ubuntu/ $1 main" | sudo tee /etc/apt/sources.list.d/ria-repository.list
+  echo -e "# AUTOMATICALLY GENERATED\ndeb https://installer.id.ee/media/ubuntu/ $1 main" | sudo tee /etc/apt/sources.list.d/ria-repository.list
 }
 
 make_install() {
@@ -64,7 +64,7 @@ make_install() {
 }
 
 make_fail() {
-  echo "$1"
+  echo -e "$1"
   exit 3	
 }
 
@@ -137,4 +137,4 @@ esac
 
 add_key
 make_install
-echo "\n\nThank you for using Estonian ID card!"
+echo -e "\n\nThank you for using Estonian ID card!"
