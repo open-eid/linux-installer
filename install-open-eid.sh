@@ -1,6 +1,8 @@
 #!/bin/bash
 # This script configures .deb based Linux repositories
 # License: public domain
+# Script https://github.com/open-eid/linux-installer
+# See wiki https://github.com/open-eid/linux-installer/wiki/Linux-Packages
 set -e
 
 # Key used for signing releases
@@ -85,8 +87,10 @@ fi
 test_root
 test_sudo
 
+# 13.10 saucy
 # 14.04 trusty
 # 14.10 utopic
+# 15.04 vivid
 
 # check if Debian or Ubuntu
 distro=`lsb_release -is`
