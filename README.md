@@ -14,6 +14,10 @@ A metapackage for Ubuntu/Debian based distributions.
         dch --distribution unstable -v 3.11.0.0 'Release'
         dpkg-buildpackage -rfakeroot -us -uc
 
+3. Official packages can be installed via the helper script that configures your Debian based machine to use the official repository
+
+        https://installer.id.ee/media/install-scripts/install-open-eid.sh
+
 ## Support
 Official builds are provided through official distribution point [installer.id.ee](https://installer.id.ee). If you want support, you need to be using official builds. Contact for assistance by email [abi@id.ee](mailto:abi@id.ee) or [www.id.ee](http://www.id.ee).
 
