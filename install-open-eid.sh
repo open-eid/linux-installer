@@ -60,9 +60,9 @@ add_repository() {
 }
 
 make_install() {
-  echo "Installing software (apt-get update && apt-get install estonianidcard)"
+  echo "Installing software (apt-get update && apt-get install open-eid)"
   sudo apt-get update
-  sudo apt-get install estonianidcard
+  sudo apt-get install open-eid
 }
 
 make_fail() {

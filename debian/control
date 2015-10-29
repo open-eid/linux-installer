@@ -1,4 +1,4 @@
-Source: estonianidcard
+Source: open-eid
 Section: metapackages
 Priority: extra
 Maintainer: ria <info@ria.ee>
@@ -7,7 +7,11 @@ Build-Depends:
 Standards-Version: 3.9.3
 Homepage: https://www.ria.ee
 
-Package: estonianidcard
+Package: open-eid
+Replaces:
+ estonianidcard
+Breaks:
+ estonianidcard
 Architecture: all
 Depends:
  chrome-token-signing,
@@ -19,9 +23,9 @@ Depends:
  qdigidoc,
  qesteidutil,
  ${misc:Depends}
-Description: Estonian ID card desktop metapackage
+Description: This is eID Software metapackage
  This package does not contain anything itself, it's a metapackage that will
- pull in packages required for using the Estonian ID card on the desktop:
+ pull in packages required for using the eID Software on the desktop:
  .
  esteidfirefoxplugin - Firefox Estonian ID card digital signature plugin
  esteidpkcs11loader - Firefox PKCS#11 module loader
