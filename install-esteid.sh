@@ -64,6 +64,14 @@ add_repository() {
   echo -e "# AUTOMATICALLY GENERATED\ndeb https://installer.id.ee/media/ubuntu/ $1 main" | sudo tee /etc/apt/sources.list.d/ria-repository.list
 }
 
+# Debian and Debian-based distros often lack apt-transport-https installation,
+# so we attempt to install it before fetching stuff from RIA HTTPS repo
+install_apt_transport_https() {
+  echo "### Installing possibly missing https support for APT (apt-get install apt-transport-https)"
+  # Debian lacks https support for apt, by default
+  sudo apt-get install apt-transport-https
+}
+
 make_install() {
   echo "Installing software (apt-get update && apt-get install estonianidcard)"
   sudo apt-get update
@@ -103,9 +111,7 @@ codename=`lsb_release -cs`
 case $distro in
    Debian)
       make_warn "Debian is not officially supported"
-      echo "### Installing possibly missing https support for APT (apt-get install apt-transport-https)"
-      # Debian lacks https support for apt, by default
-      sudo apt-get install apt-transport-https
+      install_apt_transport_https
       case $codename in
         wheezy)
           add_repository trusty
@@ -138,9 +144,11 @@ case $distro in
       esac
       ;;
    Kali)
+      make_warn "Kali Linux is not officially supported"
+      install_apt_transport_https
       case $codename in
-        sana) make_warn "Kali Linux 2.0 ($codename) is not officially supported"
-        add_repository trusty
+        sana)
+          add_repository trusty
         ;;
         *)
           make_fail "Kali $release ($codename) is not officially supported"
