@@ -130,6 +130,16 @@ case $distro in
           ;;
       esac
       ;;
+   Kali)
+      case $codename in
+        sana) make_warn "Kali Linux 2.0 ($codename) is not officially supported"
+        add_repository trusty
+        ;;
+        *)
+          make_fail "Kali $release ($codename) is not officially supported"
+          ;;
+      esac
+      ;;
    *)
       make_fail "$distro is not supported :("
       ;;
