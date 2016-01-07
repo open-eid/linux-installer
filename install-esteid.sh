@@ -46,8 +46,15 @@ test_sudo() {
 
 test_root() {
   if test `id -u` -eq 0; then
-    echo "You run this script as root. DO NOT RUN RANDOM SCRIPTS AS ROOT."
-    exit 2
+    echo "You ran this script as root. ARE YOU CERTAIN YOU KNOW WHAT YOU ARE DOING?"
+    select certain in Yes No; do
+      if [ "$certain" == "Yes" ]; then
+        alias sudo=""  # redefine sudo and allow execution as root
+        break
+      else
+        exit 2
+      fi
+    done
   fi
 }
 
