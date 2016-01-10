@@ -7,7 +7,7 @@ before_install:
 
 script:
 - dh_make --createorig --addmissing --defaultless -y -p estonianidcard_3.11.0.0
-- dch --distribution unstable -v 3.11.0.0 'Release'
+- dch --distribution `lsb_release -cs` -v 3.11.0.0 'Release'
 - dpkg-buildpackage -rfakeroot -us -uc
  
 os:
