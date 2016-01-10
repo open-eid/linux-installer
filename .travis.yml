@@ -1,4 +1,6 @@
 sudo: required
+dist: trusty
+
 before_install:
 - sudo apt-get update -qq
 - sudo apt-get install -y dh-make dpkg-dev devscripts
