@@ -46,8 +46,15 @@ test_sudo() {
 
 test_root() {
   if test `id -u` -eq 0; then
-    echo "You run this script as root. DO NOT RUN RANDOM SCRIPTS AS ROOT."
-    exit 2
+    echo "You ran this script as root. ARE YOU CERTAIN YOU KNOW WHAT YOU ARE DOING?"
+    select certain in Yes No; do
+      if [ "$certain" == "Yes" ]; then
+        alias sudo=""  # redefine sudo and allow execution as root
+        break
+      else
+        exit 2
+      fi
+    done
   fi
 }
 
@@ -55,6 +62,14 @@ test_root() {
 add_repository() {
   echo "Adding RIA repository to APT sources list (/etc/apt/sources.list.d/ria-repository.list)"
   echo -e "# AUTOMATICALLY GENERATED\ndeb https://installer.id.ee/media/ubuntu/ $1 main" | sudo tee /etc/apt/sources.list.d/ria-repository.list
+}
+
+# Debian and Debian-based distros often lack apt-transport-https installation,
+# so we attempt to install it before fetching stuff from RIA HTTPS repo
+install_apt_transport_https() {
+  echo "### Installing possibly missing https support for APT (apt-get install apt-transport-https)"
+  # Debian lacks https support for apt, by default
+  sudo apt-get install apt-transport-https
 }
 
 make_install() {
@@ -96,9 +111,7 @@ codename=`lsb_release -cs`
 case $distro in
    Debian)
       make_warn "Debian is not officially supported"
-      echo "### Installing possibly missing https support for APT (apt-get install apt-transport-https)"
-      # Debian lacks https support for apt, by default
-      sudo apt-get install apt-transport-https
+      install_apt_transport_https
       case $codename in
         wheezy)
           add_repository trusty
@@ -127,6 +140,18 @@ case $distro in
           ;;
         *)
           make_fail "LinuxMint $release is not officially supported"
+          ;;
+      esac
+      ;;
+   Kali)
+      make_warn "Kali Linux is not officially supported"
+      install_apt_transport_https
+      case $codename in
+        sana)
+          add_repository trusty
+        ;;
+        *)
+          make_fail "Kali $release ($codename) is not officially supported"
           ;;
       esac
       ;;
