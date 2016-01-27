@@ -114,10 +114,6 @@ case $distro in
       ;;
    Ubuntu)
       case $codename in
-        wily)
-          make_warn "Ubuntu $codename is not officially supported"
-          add_repository vivid
-          ;;
         *)
           add_repository $codename
           ;;
