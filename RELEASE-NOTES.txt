@@ -1,3 +1,10 @@
+Packaging version 3.12 release notes
+--------------------------------------
+Changes compared to ver 3.10
+
+- Changed branding
+
+
 Packaging version 3.10 release notes
 --------------------------------------
 Changes compared to ver 3.9.1
