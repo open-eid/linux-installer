@@ -62,7 +62,7 @@ add_repository() {
 make_install() {
   echo "Installing software (apt-get update && apt-get install open-eid)"
   sudo apt-get update
-  sudo apt-get install open-eid
+  sudo apt-get install $1
 }
 
 make_fail() {
@@ -87,15 +87,16 @@ fi
 test_root
 test_sudo
 
-# 13.10 saucy
 # 14.04 trusty
 # 14.10 utopic
 # 15.04 vivid
+# 15.10 wily
 
 # check if Debian or Ubuntu
 distro=`lsb_release -is`
 release=`lsb_release -rs`
 codename=`lsb_release -cs`
+instpackage="open-eid"
 
 case $distro in
    Debian)
@@ -114,6 +115,10 @@ case $distro in
       ;;
    Ubuntu)
       case $codename in
+        utopic|vivid)
+          add_repository $codename
+          instpackage="estonianidcard"
+          ;;
         *)
           add_repository $codename
           ;;
@@ -136,5 +141,5 @@ case $distro in
 esac
 
 add_key
-make_install
+make_install $instpackage
 echo -e "\n\nThank you for using Estonian ID card!"
