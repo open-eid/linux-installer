@@ -185,8 +185,12 @@ case $distro in
    LinuxMint)
       case $release in
         17*)
-          make_warn "LinuxMint is not officially supported"
+          make_warn "LinuxMint 17 is not officially supported"
           add_repository trusty
+          ;;
+        18*)
+          make_warn "LinuxMint 18 is not officially supported"
+          add_repository xenial
           ;;
         *)
           make_fail "LinuxMint $release is not officially supported"
