@@ -197,6 +197,21 @@ case $distro in
           ;;
       esac
       ;;
+   Elementary*OS|Elementary)
+      case $release in
+        0.3*)
+          make_warn "Elementary OS 0.3 is not officially supported"
+          add_repository trusty
+          ;;
+        0.4*)
+          make_warn "Elementary OS 0.4 is not officially supported"
+          add_repository xenial
+          ;;
+        *)
+          make_fail "Elementary OS $release is not officially supported"
+          ;;
+      esac
+      ;;
    *)
       make_fail "$distro is not supported :("
       ;;
