@@ -198,7 +198,7 @@ case $distro in
           ;;
       esac
       ;;
-   Elementary*OS|Elementary)
+   elementary*OS|elementary)
       case $release in
         0.3*)
           make_warn "Elementary OS 0.3 is not officially supported"
