@@ -149,6 +149,7 @@ test_sudo
 # 15.04 vivid
 # 15.10 wily
 # 16.04 xenial
+# 16.10 yakkety
 
 # check if Debian or Ubuntu
 distro=`lsb_release -is`
