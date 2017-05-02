@@ -172,9 +172,8 @@ case $distro in
       ;;
    Ubuntu)
       case $codename in
-        utopic|vivid)
-          add_repository $codename
-          instpackage="estonianidcard"
+        utopic|vivid|wily)
+          make_fail "Ubuntu $codename is not officially supported"
           ;;
         *)
           add_repository $codename
