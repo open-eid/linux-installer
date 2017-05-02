@@ -124,7 +124,7 @@ make_install() {
 
 make_fail() {
   echo -e "$1"
-  exit 3	
+  exit 3
 }
 
 make_warn() {
@@ -145,11 +145,9 @@ test_root
 test_sudo
 
 # 14.04 trusty
-# 14.10 utopic
-# 15.04 vivid
-# 15.10 wily
 # 16.04 xenial
 # 16.10 yakkety
+# 17.04 zesty
 
 # check if Debian or Ubuntu
 distro=`lsb_release -is`
