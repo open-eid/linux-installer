@@ -22,7 +22,7 @@ Depends:
  libdigidocpp-tools,
  qdigidoc,
  qesteidutil,
- qesteidutil-tera,
+ qestidutil-tera,
  ${misc:Depends}
 Description: This is eID Software metapackage
  This package does not contain anything itself, it's a metapackage that will
@@ -32,7 +32,7 @@ Description: This is eID Software metapackage
  esteidpkcs11loader - Firefox PKCS#11 module loader
  qdigidoc - Estonian ID card digital signature desktop tools
  qesteidutil - Estonian ID card management desktop utility
- qesteidutil-tera - Estonian time-stamping application
+ qestidutil-tera - Estonian time-stamping application
  .
  Change Log (in English): http://www.id.ee/eng/changelog
  Muudatuste loetelu (in Estonian): http://www.id.ee/changelog
