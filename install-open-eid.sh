@@ -170,7 +170,7 @@ case $distro in
           ;;
       esac
       ;;
-   Ubuntu)
+   Ubuntu|neon)
       case $codename in
         utopic|vivid|wily)
           make_fail "Ubuntu $codename is not officially supported"
