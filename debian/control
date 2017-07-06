@@ -16,7 +16,6 @@ Architecture: all
 Depends:
  chrome-token-signing,
  libnss3-tools,
- esteidfirefoxplugin,
  esteidpkcs11loader,
  libdigidoc-tools,
  libdigidocpp-tools,
@@ -28,7 +27,7 @@ Description: This is eID Software metapackage
  This package does not contain anything itself, it's a metapackage that will
  pull in packages required for using the eID Software on the desktop:
  .
- esteidfirefoxplugin - Firefox Estonian ID card digital signature plugin
+ chrome-token-signing - Chrome / Firefox digital signature plugin
  esteidpkcs11loader - Firefox PKCS#11 module loader
  qdigidoc - Estonian ID card digital signature desktop tools
  qesteidutil - Estonian ID card management desktop utility
