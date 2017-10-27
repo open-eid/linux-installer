@@ -217,4 +217,6 @@ esac
 
 add_key
 make_install $instpackage
+# Configure Chrome PKCS11 driver for current user, /etc/xdg/autstart/ will init other users on next logon
+/usr/bin/esteid-update-nssdb
 echo -e "\n\nThank you for using Estonian ID card!"
