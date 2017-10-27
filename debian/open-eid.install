@@ -1,2 +1,2 @@
 esteid-update-nssdb usr/bin
-95-esteid-update-nssdb etc/X11/Xsession.d
+chrome-pkcs11.desktop etc/xdg/autostart
