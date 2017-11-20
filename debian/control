@@ -3,8 +3,8 @@ Section: metapackages
 Priority: extra
 Maintainer: ria <info@ria.ee>
 Build-Depends:
- debhelper (>= 7)
-Standards-Version: 3.9.3
+ debhelper (>= 9)
+Standards-Version: 3.9.8
 Homepage: https://www.ria.ee
 
 Package: open-eid
@@ -16,7 +16,7 @@ Architecture: all
 Depends:
  chrome-token-signing,
  libnss3-tools,
- esteidpkcs11loader,
+ firefox-pkcs11-loader,
  libdigidoc-tools,
  libdigidocpp-tools,
  qdigidoc,
@@ -28,7 +28,7 @@ Description: This is eID Software metapackage
  pull in packages required for using the eID Software on the desktop:
  .
  chrome-token-signing - Chrome / Firefox digital signature plugin
- esteidpkcs11loader - Firefox PKCS#11 module loader
+ firefox-pkcs11-loader - Firefox PKCS#11 module loader
  qdigidoc - Estonian ID card digital signature desktop tools
  qesteidutil - Estonian ID card management desktop utility
  qdigidoc-tera - Estonian time-stamping application
