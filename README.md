@@ -1,3 +1,5 @@
+[![Travis](https://img.shields.io/travis/open-eid/linux-installer.svg)](https://travis-ci.org/open-eid/linux-installer)
+
 Ubuntu metapackage
 ==================
 
