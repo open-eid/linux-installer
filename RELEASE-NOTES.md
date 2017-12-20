@@ -1,3 +1,28 @@
+linux-installer version [17.12](https://github.com/open-eid/linux-installer/releases/tag/v17.12) release notes
+--------------------------------------
+- Add firefox-pkcs11-loader dependency
+
+[Full Changelog](https://github.com/open-eid/linux-installer/compare/v17.11...v17.12)
+
+linux-installer version [17.11](https://github.com/open-eid/linux-installer/releases/tag/v17.11) release notes
+--------------------------------------
+- Configure Chrome PKCS11 on Ubuntu 17.10
+
+[Full Changelog](https://github.com/open-eid/linux-installer/compare/v17.10...v17.11)
+
+linux-installer version [17.10](https://github.com/open-eid/linux-installer/releases/tag/v17.10) release notes
+--------------------------------------
+- NPAPI plugin is deprecated
+- Update esteid-update-nssdb script
+
+[Full Changelog](https://github.com/open-eid/linux-installer/compare/v17.06...v17.10)
+
+linux-installer version [17.06](https://github.com/open-eid/linux-installer/releases/tag/v17.06) release notes
+--------------------------------------
+- Added qdigidoc-tera dependency
+
+[Full Changelog](https://github.com/open-eid/linux-installer/compare/v3.12.0...v17.06)
+
 Packaging version 3.12 release notes
 --------------------------------------
 Changes compared to ver 3.10
