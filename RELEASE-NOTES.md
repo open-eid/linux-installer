@@ -1,3 +1,7 @@
+linux-installer version [18.06](https://github.com/open-eid/linux-installer/releases/tag/v18.06) release notes
+--------------------------------------
+- DigiDoc3 dependency (qdigidoc) replaced with new dependency DigiDoc4 Client (qdigidoc4)
+
 linux-installer version [17.12](https://github.com/open-eid/linux-installer/releases/tag/v17.12) release notes
 --------------------------------------
 - Add firefox-pkcs11-loader dependency
