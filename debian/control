@@ -19,8 +19,7 @@ Depends:
  firefox-pkcs11-loader,
  libdigidoc-tools,
  libdigidocpp-tools,
- qdigidoc,
- qesteidutil,
+ qdigidoc4,
  qdigidoc-tera,
  ${misc:Depends}
 Description: This is eID Software metapackage
@@ -29,8 +28,7 @@ Description: This is eID Software metapackage
  .
  chrome-token-signing - Chrome / Firefox digital signature plugin
  firefox-pkcs11-loader - Firefox PKCS#11 module loader
- qdigidoc - Estonian ID card digital signature desktop tools
- qesteidutil - Estonian ID card management desktop utility
+ qdigidoc4 - Estonian digital signing and ID card management application
  qdigidoc-tera - Estonian time-stamping application
  .
  Change Log (in English): http://www.id.ee/eng/changelog
