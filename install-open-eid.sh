@@ -119,7 +119,7 @@ add_repository() {
 make_install() {
   echo "Installing software (apt-get update && apt-get install open-eid)"
   sudo apt-get update
-  sudo apt-get install $1
+  sudo apt-get install open-eid opensc $1
 }
 
 make_fail() {
@@ -146,8 +146,8 @@ test_sudo
 
 # 14.04 trusty
 # 16.04 xenial
-# 16.10 yakkety
-# 17.04 zesty
+# 17.10 artful
+# 18.04 bionic
 
 # check if Debian or Ubuntu
 distro=`lsb_release -is`
