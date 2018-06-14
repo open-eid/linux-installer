@@ -12,8 +12,8 @@ A metapackage for Ubuntu/Debian based distributions.
 
 2. Build
 
-        dh_make --createorig --addmissing --defaultless -y -p estonianidcard_3.11.0.0
-        dch --distribution unstable -v 3.11.0.0 'Release'
+        dh_make --createorig --addmissing --defaultless -y -p open-eid_18.6.0.0
+        dch --distribution unstable -v 18.6.0.0 'Release'
         dpkg-buildpackage -rfakeroot -us -uc
 
 3. Official packages can be installed via the helper script that configures your Debian based machine to use the official repository
