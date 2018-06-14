@@ -119,7 +119,7 @@ add_repository() {
 make_install() {
   echo "Installing software (apt-get update && apt-get install open-eid)"
   sudo apt-get update
-  sudo apt-get install open-eid opensc $1
+  sudo apt-get install opensc $1
 }
 
 make_fail() {
