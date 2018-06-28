@@ -190,6 +190,10 @@ case $distro in
           make_warn "LinuxMint 18 is not officially supported"
           add_repository xenial
           ;;
+        19*)
+          make_warn "LinuxMint 19 is not officially supported"
+          add_repository bionic
+          ;;
         *)
           make_fail "LinuxMint $release is not officially supported"
           ;;
