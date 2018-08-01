@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script removes open-eid .deb packages
 
-sudo apt-get purge \
+sudo dpkg --purge \
   chrome-token-signing firefox-pkcs11-loader \
   libdigidoc-common libdigidoc-tools libdigidoc2 \
   libdigidocpp-common libdigidocpp-tools libdigidocpp1 \
