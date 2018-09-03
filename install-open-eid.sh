@@ -98,13 +98,13 @@ add_key() {
 }
 
 test_sudo() {
-  if ! which sudo>/dev/null; then
+  if ! command -v sudo>/dev/null; then
      make_fail "You must have sudo and be in sudo group\nAs root do: apt-get install sudo && adduser $USER sudo"
   fi
 }
 
 test_root() {
-  if test `id -u` -eq 0; then
+  if test $(id -u) -eq 0; then
     echo "You run this script as root. DO NOT RUN RANDOM SCRIPTS AS ROOT."
     exit 2
   fi
@@ -120,7 +120,7 @@ add_repository() {
 make_install() {
   echo "Installing software (apt-get update && apt-get install open-eid)"
   sudo apt-get update
-  sudo apt-get install opensc $1
+  sudo apt-get install opensc "$1"
 }
 
 make_fail() {
@@ -131,13 +131,13 @@ make_fail() {
 make_warn() {
   echo "### $1"
   echo "Press ENTER to continue, CTRL-C to cancel"
-  read dummy
+  read -r dummy
 }
 
 ### Install Estonian ID card software
 
 # check for Debian derivative.
-if ! which lsb_release>/dev/null; then
+if ! command -v lsb_release>/dev/null; then
   make_fail "# Not a Debian Linux :("
 fi
 
@@ -151,9 +151,9 @@ test_sudo
 # 18.04 bionic
 
 # check if Debian or Ubuntu
-distro=`lsb_release -is`
-release=`lsb_release -rs`
-codename=`lsb_release -cs`
+distro=$(lsb_release -is)
+release=$(lsb_release -rs)
+codename=$(lsb_release -cs)
 instpackage="open-eid"
 
 case $distro in
@@ -162,7 +162,7 @@ case $distro in
       echo "### Installing possibly missing https support for APT (apt-get install apt-transport-https)"
       # Debian lacks https support for apt, by default
       sudo apt-get install apt-transport-https
-      case $codename in
+      case "$codename" in
         wheezy)
           add_repository trusty
           ;;
