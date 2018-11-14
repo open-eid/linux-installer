@@ -1,3 +1,7 @@
+linux-installer version [18.12](https://github.com/open-eid/linux-installer/releases/tag/v18.12) release notes
+--------------------------------------
+- Include IDEMIA drivers
+
 linux-installer version [18.06](https://github.com/open-eid/linux-installer/releases/tag/v18.06) release notes
 --------------------------------------
 - DigiDoc3 and ID-card utility (qdigidoc, qesteidutil) replaced with new dependency DigiDoc4 Client (qdigidoc4)
