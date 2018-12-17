@@ -1,0 +1,10 @@
+#!/bin/bash
+
+rm -f /etc/apt/sources.list.d/ria-repository.list
+apt-key del 592073D4
+apt-key del C6C83D68
+
+if [ "$1" = purge ] && [ -e /usr/share/debconf/confmodule ]; then
+	. /usr/share/debconf/confmodule
+	db_purge
+fi

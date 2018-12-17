@@ -1,0 +1,22 @@
+#!/bin/bash
+
+save_settings() {
+  set -e
+  DISTRO=$(lsb_release -is)
+  CODENAME=$(lsb_release -cs)
+  if [ "${DISTRO}" = "Ubuntu" ]; then
+    cat <<EOF > /etc/apt/sources.list.d/ria-repository.list
+deb https://installer.id.ee/media/ubuntu/ ${CODENAME} main
+EOF
+  fi
+  set +e
+}
+
+case "$1" in
+  configure)
+    save_settings
+    ;;
+  reconfigure)
+    save_settings
+    ;;
+esac
