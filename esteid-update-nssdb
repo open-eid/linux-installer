@@ -57,7 +57,9 @@ for DIR in $LIBS; do
             echo "ID-card support for Google Chrome/Chromium already enabled"
         else
             echo "Enabling ID-card functionality in Google Chrome/Chromium via $LIB"
-            $MODUTIL -delete opensc-pkcs11
+            if $MODUTIL -list opensc-pkcs11 2>>/dev/null; then
+                $MODUTIL -delete opensc-pkcs11
+            fi
             $MODUTIL -add opensc-pkcs11 -libfile $LIB -mechanisms FRIENDLY
         fi
         exit
