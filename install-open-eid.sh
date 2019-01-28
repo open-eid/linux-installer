@@ -180,6 +180,10 @@ case $distro in
           make_warn "Elementary OS 0.4 is not officially supported"
           add_repository xenial
           ;;
+        5.*)
+          make_warn "Elementary OS 5 is not officially supported"
+          add_repository bionic
+          ;;
         *)
           make_fail "Elementary OS $release is not officially supported"
           ;;
