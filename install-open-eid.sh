@@ -5,6 +5,15 @@
 # See wiki https://github.com/open-eid/linux-installer/wiki/Linux-Packages
 set -e
 
+# version name    LTS?  supported
+# 14.04   trusty  LTS   2019-04
+# 16.04   xenial  LTS   2021-04
+# 18.04   bionic  LTS   2023-04
+# 18.10   cosmic  -     2019-07
+# 19.04   disco   -     2020-01
+UNSUPPORTED_UBUNTU_CODENAMES=(trusty utopic vivid wily artful)
+SUPPORTED_UBUNTU_CODENAMES=(xenial bionic cosmic)  # keep latest at end
+
 # Key used for signing releases
 RIA_KEY="""-----BEGIN PGP PUBLIC KEY BLOCK-----
 Comment: GPGTools - https://gpgtools.org
@@ -116,10 +125,6 @@ fi
 test_root
 test_sudo
 
-# 16.04 xenial
-# 18.04 bionic
-# 18.10 cosmic
-
 # check if Debian or Ubuntu
 distro=$(lsb_release -is)
 release=$(lsb_release -rs)
@@ -143,11 +148,18 @@ case $distro in
       ;;
    Ubuntu)
       case $codename in
-        utopic|vivid|wily|trusty|artful)
+        SUPPORTED_UBUNTU_CODENAMES)
+          add_repository $codename
+          ;;
+        UNSUPPORTED_UBUNTU_CODENAMES)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
         *)
-          add_repository $codename
+          # It always takes some time for RIA to build packages for new releaseses.
+          # Usually previous release packages work fine.
+          make_warn "Ubuntu $codename is not officially supported"
+          make_warn "Trying to install package for Ubuntu ${SUPPORTED_UBUNTU_CODENAMES[-1]}"
+          add_repository ${SUPPORTED_UBUNTU_CODENAMES[-1]}
           ;;
       esac
       ;;
