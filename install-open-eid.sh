@@ -116,9 +116,12 @@ fi
 test_root
 test_sudo
 
-# 16.04 xenial
-# 18.04 bionic
-# 18.10 cosmic
+# version   name    LTS   supported until
+# 16.04     xenial  LTS   2021-04
+# 18.04     bionic  LTS   2023-04
+# 18.10     cosmic  -     2019-07
+# 19.04     disco   -     2020-01
+LATEST_SUPPORTED_UBUNTU_CODENAME='cosmic'
 
 # check if Debian or Ubuntu
 distro=$(lsb_release -is)
@@ -146,8 +149,15 @@ case $distro in
         utopic|vivid|wily|trusty|artful)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        *)
+        xenial|bionic|cosmic)
           add_repository $codename
+          ;;
+        *)
+          # It always takes some time for RIA to build packages for new releaseses.
+          # Usually previous release packages work fine.
+          make_warn "Ubuntu $codename is not officially supported"
+          make_warn "Trying to install package for Ubuntu ${LATEST_SUPPORTED_UBUNTU_CODENAME}"
+          add_repository ${LATEST_SUPPORTED_UBUNTU_CODENAME}
           ;;
       esac
       ;;
