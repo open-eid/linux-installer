@@ -21,7 +21,6 @@ Depends:
  libdigidocpp-tools,
  qdigidoc4,
  qdigidoc-tera,
- awp,
  ${misc:Depends}
 Description: This is eID Software metapackage
  This package does not contain anything itself, it's a metapackage that will
