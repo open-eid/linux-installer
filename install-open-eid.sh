@@ -91,7 +91,7 @@ add_repository() {
 make_install() {
   echo "Installing software (apt-get update && apt-get install open-eid)"
   sudo apt-get update
-  sudo apt-get install opensc "$1"
+  sudo apt-get install opensc "$@"
 }
 
 make_fail() {
@@ -121,13 +121,12 @@ test_sudo
 # 18.04     bionic  LTS   2023-04
 # 18.10     cosmic  -     2019-07
 # 19.04     disco   -     2020-01
-LATEST_SUPPORTED_UBUNTU_CODENAME='cosmic'
+LATEST_SUPPORTED_UBUNTU_CODENAME='disco'
 
 # check if Debian or Ubuntu
 distro=$(lsb_release -is)
 release=$(lsb_release -rs)
 codename=$(lsb_release -cs)
-instpackage="open-eid"
 
 case $distro in
    Debian)
@@ -136,9 +135,6 @@ case $distro in
       # Debian lacks https support for apt, by default
       sudo apt-get install apt-transport-https
       case "$codename" in
-        wheezy)
-          add_repository trusty
-          ;;
         *)
           make_fail "Debian $codename is not officially supported"
           ;;
@@ -149,12 +145,10 @@ case $distro in
         utopic|vivid|wily|trusty|artful)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        xenial|bionic|cosmic)
+        xenial|bionic|cosmic|disco)
           add_repository $codename
           ;;
         *)
-          # It always takes some time for RIA to build packages for new releaseses.
-          # Usually previous release packages work fine.
           make_warn "Ubuntu $codename is not officially supported"
           make_warn "Trying to install package for Ubuntu ${LATEST_SUPPORTED_UBUNTU_CODENAME}"
           add_repository ${LATEST_SUPPORTED_UBUNTU_CODENAME}
@@ -163,10 +157,6 @@ case $distro in
       ;;
    LinuxMint)
       case $release in
-        17*)
-          make_warn "LinuxMint 17 is not officially supported"
-          add_repository trusty
-          ;;
         18*)
           make_warn "LinuxMint 18 is not officially supported"
           add_repository xenial
@@ -182,10 +172,6 @@ case $distro in
       ;;
    elementary*OS|elementary)
       case $release in
-        0.3*)
-          make_warn "Elementary OS 0.3 is not officially supported"
-          add_repository trusty
-          ;;
         0.4*)
           make_warn "Elementary OS 0.4 is not officially supported"
           add_repository xenial
@@ -205,7 +191,7 @@ case $distro in
 esac
 
 add_key
-make_install $instpackage
+make_install open-eid chrome-token-signing-policy
 # Configure Chrome PKCS11 driver for current user, /etc/xdg/autstart/ will init other users on next logon
 /usr/bin/esteid-update-nssdb
 echo -e "\n\nThank you for using Estonian ID card!"
