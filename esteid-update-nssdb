@@ -28,7 +28,6 @@ CERTUTIL="/usr/bin/certutil -d sql:$NSSDB"
 CERTS="/usr/share/libdigidoc"
 LIBS=$(ld --verbose | grep SEARCH | awk '{ gsub(/;/,"\n"); print }' | awk -F '\"' '/SEARCH_DIR\(\"=?/ { gsub(/=/,""); print $2 }')
 PKCS11=onepin-opensc-pkcs11.so
-AWP=/usr/local/AWP/lib/libOcsPKCS11Wrapper.so
 
 if [ ! -f $NSSDB/cert9.db ]; then
     echo "Initializing new database"
@@ -49,16 +48,6 @@ for YEAR in 2011 2015; do
         echo "$CERT missing, perhaps Estonian ID-card stack needs updating?"
     fi
 done
-
-if [ -f $AWP ]; then
-    echo "Found PKCS#11 library at: $AWP"
-    if grep -q library=$AWP $NSSDB/pkcs11.txt; then
-        echo "IDEMIA-card support for Google Chrome/Chromium already enabled"
-    else
-        echo "Enabling IDEMIA-card functionality in Google Chrome/Chromium via $AWP"
-        $MODUTIL -add idemia-pkcs11 -libfile $AWP -mechanisms FRIENDLY
-    fi
-fi
 
 for DIR in $LIBS; do
     LIB=$DIR/$PKCS11
