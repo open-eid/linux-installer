@@ -1,4 +1,4 @@
-linux-installer version [19.06](https://github.com/open-eid/linux-installer/releases/tag/v19.06) release notes
+linux-installer version [19.07](https://github.com/open-eid/linux-installer/releases/tag/v19.07) release notes
 --------------------------------------
 - Don't depend IDEMIA drivers
 
