@@ -119,7 +119,6 @@ test_sudo
 # version   name    LTS   supported until
 # 16.04     xenial  LTS   2021-04
 # 18.04     bionic  LTS   2023-04
-# 18.10     cosmic  -     2019-07
 # 19.04     disco   -     2020-01
 LATEST_SUPPORTED_UBUNTU_CODENAME='disco'
 
@@ -142,10 +141,10 @@ case $distro in
       ;;
    Ubuntu)
       case $codename in
-        utopic|vivid|wily|trusty|artful)
+        utopic|vivid|wily|trusty|artful|cosmic)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        xenial|bionic|cosmic|disco)
+        xenial|bionic|disco)
           add_repository $codename
           ;;
         *)
