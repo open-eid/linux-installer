@@ -134,6 +134,11 @@ case $distro in
       # Debian lacks https support for apt, by default
       sudo apt-get install apt-transport-https
       case "$codename" in
+        buster)
+          make_warn "Debian $codename is not officially supported"
+          make_warn "Installing from ubuntu-bionic repository"
+          add_repository bionic
+          ;;
         *)
           make_fail "Debian $codename is not officially supported"
           ;;
