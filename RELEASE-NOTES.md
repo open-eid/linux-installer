@@ -1,3 +1,8 @@
+linux-installer version [19.10](https://github.com/open-eid/linux-installer/releases/tag/v19.10) release notes
+--------------------------------------
+- Remove IDEMIA PKCS11 from Chrome config
+- Support new chrome-token-signing package layout 
+
 linux-installer version [19.07](https://github.com/open-eid/linux-installer/releases/tag/v19.07) release notes
 --------------------------------------
 - Don't depend IDEMIA drivers
