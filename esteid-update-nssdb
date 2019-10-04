@@ -24,30 +24,15 @@
 
 NSSDB=$HOME/.pki/nssdb
 MODUTIL="/usr/bin/modutil -force -dbdir sql:$NSSDB"
-CERTUTIL="/usr/bin/certutil -d sql:$NSSDB"
-CERTS="/usr/share/libdigidoc"
 LIBS=$(ld --verbose | grep SEARCH | awk '{ gsub(/;/,"\n"); print }' | awk -F '\"' '/SEARCH_DIR\(\"=?/ { gsub(/=/,""); print $2 }')
 PKCS11=onepin-opensc-pkcs11.so
 
 if [ ! -f $NSSDB/cert9.db ]; then
     echo "Initializing new database"
     mkdir -p $NSSDB
-    $CERTUTIL -N --empty-password
 fi
 
-for YEAR in 2011 2015; do
-    CERT="$CERTS/ESTEID-SK $YEAR.crt"
-    if [ -e "$CERT" ]; then
-        if grep -q ESTEID-SK_$YEAR $NSSDB/cert9.db; then
-            echo "$CERT already imported"
-        else
-            echo "Importing $CERT"
-            PCSCLITE_CSOCK_NAME=/dev/null $CERTUTIL -A -t ",," -n "ESTEID-SK_$YEAR" -i "$CERT"
-        fi
-    else
-        echo "$CERT missing, perhaps Estonian ID-card stack needs updating?"
-    fi
-done
+$MODUTIL -delete idemia-pkcs11
 
 for DIR in $LIBS; do
     LIB=$DIR/$PKCS11
