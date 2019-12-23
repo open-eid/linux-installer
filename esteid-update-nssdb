@@ -24,7 +24,7 @@
 
 NSSDB=$HOME/.pki/nssdb
 MODUTIL="/usr/bin/modutil -force -dbdir sql:$NSSDB"
-LIBS=$(ldconfig -v 2>/dev/null | grep -v ^$'\t')
+LIBS=$(ldconfig -v 2>/dev/null | grep -v ^$'\t' | sed -e s/:$//)
 PKCS11=onepin-opensc-pkcs11.so
 
 if [ ! -f $NSSDB/cert9.db ]; then
@@ -32,19 +32,23 @@ if [ ! -f $NSSDB/cert9.db ]; then
     mkdir -p $NSSDB
 fi
 
-$MODUTIL -delete idemia-pkcs11
+delete_pkcs11() {
+    if $MODUTIL -list $1 2>>/dev/null; then
+        $MODUTIL -delete $1
+    fi
+}
+
+delete_pkcs11 "idemia-pkcs11"
 
 for DIR in $LIBS; do
     LIB=$DIR/$PKCS11
     if [ -f $LIB ]; then
         echo "Found PKCS#11 library at: $LIB"
-        if grep -q library=$LIB $NSSDB/pkcs11.txt; then
+        if grep -q -s library=$LIB $NSSDB/pkcs11.txt; then
             echo "ID-card support for Google Chrome/Chromium already enabled"
         else
             echo "Enabling ID-card functionality in Google Chrome/Chromium via $LIB"
-            if $MODUTIL -list opensc-pkcs11 2>>/dev/null; then
-                $MODUTIL -delete opensc-pkcs11
-            fi
+            delete_pkcs11 "opensc-pkcs11"
             $MODUTIL -add opensc-pkcs11 -libfile $LIB -mechanisms FRIENDLY
         fi
         exit
