@@ -146,7 +146,7 @@ case $distro in
       ;;
    Ubuntu)
       case $codename in
-        utopic|vivid|wily|trusty|artful|cosmic)
+        utopic|vivid|wily|trusty|artful|cosmic|disco)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
         xenial|bionic|eoan)
