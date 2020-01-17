@@ -119,8 +119,8 @@ test_sudo
 # version   name    LTS   supported until
 # 16.04     xenial  LTS   2021-04
 # 18.04     bionic  LTS   2023-04
-# 19.04     disco   -     2020-01
-LATEST_SUPPORTED_UBUNTU_CODENAME='disco'
+# 19.10     eoan   -     2020-07
+LATEST_SUPPORTED_UBUNTU_CODENAME='eoan'
 
 # check if Debian or Ubuntu
 distro=$(lsb_release -is)
@@ -146,10 +146,10 @@ case $distro in
       ;;
    Ubuntu)
       case $codename in
-        utopic|vivid|wily|trusty|artful|cosmic)
+        utopic|vivid|wily|trusty|artful|cosmic|disco)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        xenial|bionic|disco)
+        xenial|bionic|eoan)
           add_repository $codename
           ;;
         *)
