@@ -180,6 +180,22 @@ case $distro in
           ;;
       esac
       ;;
+   Pop)
+      case $codename in
+        artful|cosmic|disco|eoan)
+          make_fail "Pop!_OS $codename is not officially supported"
+          ;;
+        bionic|focal)
+          make_warn "Pop!_OS $codename is not officially supported"
+          add_repository $codename
+          ;;
+        *)
+          make_warn "Pop!_OS $codename is not officially supported"
+          make_warn "Trying to install package for Pop!_OS ${LATEST_SUPPORTED_UBUNTU_CODENAME}"
+          add_repository ${LATEST_SUPPORTED_UBUNTU_CODENAME}
+          ;;
+      esac
+      ;;
    *)
       make_fail "$distro is not supported :("
       ;;
