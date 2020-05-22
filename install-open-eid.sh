@@ -120,7 +120,8 @@ test_sudo
 # 16.04     xenial  LTS   2021-04
 # 18.04     bionic  LTS   2023-04
 # 19.10     eoan   -     2020-07
-LATEST_SUPPORTED_UBUNTU_CODENAME='eoan'
+# 20.04     focal  LTS   2025-04
+LATEST_SUPPORTED_UBUNTU_CODENAME='focal'
 
 # check if Debian or Ubuntu
 distro=$(lsb_release -is)
@@ -149,7 +150,7 @@ case $distro in
         utopic|vivid|wily|trusty|artful|cosmic|disco)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        xenial|bionic|eoan)
+        xenial|bionic|eoan|focal)
           add_repository $codename
           ;;
         *)
