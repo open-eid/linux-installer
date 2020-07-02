@@ -117,10 +117,8 @@ test_root
 test_sudo
 
 # version   name    LTS   supported until
-# 16.04     xenial  LTS   2021-04
 # 18.04     bionic  LTS   2023-04
-# 19.10     eoan   -     2020-07
-# 20.04     focal  LTS   2025-04
+# 20.04     focal   LTS   2025-04
 LATEST_SUPPORTED_UBUNTU_CODENAME='focal'
 
 # check if Debian or Ubuntu
@@ -147,10 +145,10 @@ case $distro in
       ;;
    Ubuntu)
       case $codename in
-        utopic|vivid|wily|trusty|artful|cosmic|disco)
+        utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        xenial|bionic|eoan|focal)
+        bionic|focal)
           add_repository $codename
           ;;
         *)
@@ -162,10 +160,6 @@ case $distro in
       ;;
    LinuxMint)
       case $release in
-        18*)
-          make_warn "LinuxMint 18 is not officially supported"
-          add_repository xenial
-          ;;
         19*)
           make_warn "LinuxMint 19 is not officially supported"
           add_repository bionic
@@ -177,10 +171,6 @@ case $distro in
       ;;
    elementary*OS|elementary)
       case $release in
-        0.4*)
-          make_warn "Elementary OS 0.4 is not officially supported"
-          add_repository xenial
-          ;;
         5.*)
           make_warn "Elementary OS 5 is not officially supported"
           add_repository bionic
