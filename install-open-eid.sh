@@ -158,8 +158,12 @@ case $distro in
           ;;
       esac
       ;;
-   LinuxMint)
+   Linux[Mm]int)
       case $release in
+        20*)
+          make_warn "Linuxmint 20 is not officially supported"
+          add_repository focal
+          ;;
         19*)
           make_warn "LinuxMint 19 is not officially supported"
           add_repository bionic
