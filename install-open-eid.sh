@@ -126,8 +126,8 @@ distro=$(lsb_release -is)
 release=$(lsb_release -rs)
 codename=$(lsb_release -cs)
 
-case $distro in
-   Debian)
+case $(echo $distro | tr '[:upper:]' '[:lower:]') in
+   debian)
       make_warn "Debian is not officially supported"
       echo "### Installing possibly missing https support for APT (apt-get install apt-transport-https)"
       # Debian lacks https support for apt, by default
@@ -143,7 +143,7 @@ case $distro in
           ;;
       esac
       ;;
-   Ubuntu)
+   ubuntu)
       case $codename in
         utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan)
           make_fail "Ubuntu $codename is not officially supported"
@@ -158,7 +158,7 @@ case $distro in
           ;;
       esac
       ;;
-   Linux[Mm]int)
+   linuxmint)
       case $release in
         20*)
           make_warn "Linuxmint 20 is not officially supported"
@@ -173,7 +173,7 @@ case $distro in
           ;;
       esac
       ;;
-   elementary*OS|elementary)
+   elementary*os|elementary)
       case $release in
         5.*)
           make_warn "Elementary OS 5 is not officially supported"
@@ -184,7 +184,7 @@ case $distro in
           ;;
       esac
       ;;
-   Pop)
+   pop)
       case $codename in
         artful|cosmic|disco|eoan)
           make_fail "Pop!_OS $codename is not officially supported"
