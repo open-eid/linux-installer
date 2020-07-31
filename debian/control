@@ -20,7 +20,6 @@ Depends:
  libdigidoc-tools,
  libdigidocpp-tools,
  qdigidoc4,
- qdigidoc-tera,
  ${misc:Depends}
 Description: This is eID Software metapackage
  This package does not contain anything itself, it's a metapackage that will
@@ -29,7 +28,6 @@ Description: This is eID Software metapackage
  chrome-token-signing - Chrome / Firefox digital signature plugin
  firefox-pkcs11-loader - Firefox PKCS#11 module loader
  qdigidoc4 - Estonian digital signing and ID card management application
- qdigidoc-tera - Estonian time-stamping application
  .
  Change Log (in English): https://www.id.ee/en/article/id-tarkvara-versioonide-info-release-notes/
  Muudatuste loetelu (in Estonian): https://www.id.ee/artikkel/id-tarkvara-versioonide-info-release-notes/
