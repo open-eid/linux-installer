@@ -16,6 +16,7 @@ Architecture: all
 Depends:
  chrome-token-signing,
  firefox-pkcs11-loader,
+ web-eid,
  qdigidoc4,
  libnss3-tools,
  ${misc:Depends}
@@ -29,6 +30,7 @@ Description: This is eID Software metapackage
  .
  chrome-token-signing - Chrome / Firefox digital signature plugin
  firefox-pkcs11-loader - Firefox PKCS#11 module loader
+ web-eid - new Chrome / Firefox digital signature plugin
  qdigidoc4 - Estonian digital signing and ID card management application
  .
  Change Log (in English): https://www.id.ee/en/article/id-tarkvara-versioonide-info-release-notes/
