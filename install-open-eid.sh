@@ -215,7 +215,7 @@ add_key
 make_install open-eid
 read -p "Would you like to activate Chrome ID-card signing support automatically? (Y/n): " policy
 case $policy in
-    [Yy]*|"" ) sudo apt-get install chrome-token-signing-policy;;
+    [Yy]*|"" ) sudo apt-get install web-eid-chrome-policy;;
     * ) ;;
 esac
 # Configure Chrome PKCS11 driver for current user, /etc/xdg/autstart/ will init other users on next logon
