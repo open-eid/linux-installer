@@ -1,9 +1,9 @@
 Source: open-eid
 Section: metapackages
-Priority: extra
+Priority: optional
 Maintainer: ria <info@ria.ee>
 Build-Depends:
- debhelper (>= 9)
+ debhelper (>= 10)
 Standards-Version: 3.9.8
 Homepage: https://www.ria.ee
 
@@ -15,12 +15,14 @@ Breaks:
 Architecture: all
 Depends:
  chrome-token-signing,
- libnss3-tools,
  firefox-pkcs11-loader,
- libdigidoc-tools,
- libdigidocpp-tools,
  qdigidoc4,
+ libnss3-tools,
  ${misc:Depends}
+Recommends:
+ libdigidocpp-tools
+Suggests:
+ chrome-token-signing-policy
 Description: This is eID Software metapackage
  This package does not contain anything itself, it's a metapackage that will
  pull in packages required for using the eID Software on the desktop:
