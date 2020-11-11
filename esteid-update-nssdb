@@ -25,7 +25,7 @@
 PATH="$PATH:/sbin"
 NSSDB=$HOME/.pki/nssdb
 MODUTIL="/usr/bin/modutil -force -dbdir sql:$NSSDB"
-LIBS=$(ldconfig -v 2>/dev/null | grep -v ^$'\t' | sed -e s/:$//)
+LIBS=$(ldconfig -v 2>/dev/null | grep -v ^$'\t' | sed -e s/:.*$//)
 PKCS11=onepin-opensc-pkcs11.so
 
 if [ ! -f $NSSDB/cert9.db ]; then
