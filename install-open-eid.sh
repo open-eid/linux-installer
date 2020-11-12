@@ -119,7 +119,8 @@ test_sudo
 # version   name    LTS   supported until
 # 18.04     bionic  LTS   2023-04
 # 20.04     focal   LTS   2025-04
-LATEST_SUPPORTED_UBUNTU_CODENAME='focal'
+# 20.10     groovy   -   2021-07
+LATEST_SUPPORTED_UBUNTU_CODENAME='groovy'
 
 # check if Debian or Ubuntu
 distro=$(lsb_release -is)
@@ -148,7 +149,7 @@ case $(echo $distro | tr '[:upper:]' '[:lower:]') in
         utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        bionic|focal)
+        bionic|focal|groovy)
           add_repository $codename
           ;;
         *)
