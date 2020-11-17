@@ -144,6 +144,9 @@ case $(echo $distro | tr '[:upper:]' '[:lower:]') in
           ;;
       esac
       ;;
+   neon)
+      make_warn "Neon is not officially supported; assuming that it is equivalent to Ubuntu"
+      ;&
    ubuntu)
       case $codename in
         utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan)
