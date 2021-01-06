@@ -1,4 +1,4 @@
-[![Travis](https://img.shields.io/travis/open-eid/linux-installer.svg)](https://travis-ci.com/open-eid/linux-installer)
+[![Build Status](https://github.com/open-eid/linux-installer/workflows/CI/badge.svg?branch=master)](https://github.com/open-eid/linux-installer/actions)
 
 Ubuntu metapackage
 ==================
