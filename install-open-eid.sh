@@ -123,11 +123,11 @@ test_sudo
 LATEST_SUPPORTED_UBUNTU_CODENAME='groovy'
 
 # check if Debian or Ubuntu
-distro=$(lsb_release -is)
+distro=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
 release=$(lsb_release -rs)
 codename=$(lsb_release -cs)
 
-case $(echo $distro | tr '[:upper:]' '[:lower:]') in
+case $distro in
    debian)
       make_warn "Debian is not officially supported"
       echo "### Installing possibly missing https support for APT (apt-get install apt-transport-https)"
@@ -144,10 +144,11 @@ case $(echo $distro | tr '[:upper:]' '[:lower:]') in
           ;;
       esac
       ;;
-   neon)
-      make_warn "Neon is not officially supported; assuming that it is equivalent to Ubuntu"
-      ;&
-   ubuntu)
+   ubuntu|neon)
+      case $distro in
+         neon) make_warn "Neon is not officially supported; assuming that it is equivalent to Ubuntu" ;;
+         *) ;;
+      esac
       case $codename in
         utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan)
           make_fail "Ubuntu $codename is not officially supported"
@@ -210,7 +211,12 @@ case $(echo $distro | tr '[:upper:]' '[:lower:]') in
 esac
 
 add_key
-make_install open-eid chrome-token-signing-policy
+make_install open-eid
+read -p "Would you like to activate Chrome ID-card signing support automatically? (Y/n): " policy
+case $policy in
+    [Yy]*|"" ) sudo apt-get install chrome-token-signing-policy;;
+    * ) ;;
+esac
 # Configure Chrome PKCS11 driver for current user, /etc/xdg/autstart/ will init other users on next logon
 /usr/bin/esteid-update-nssdb
 echo -e "\n\nThank you for using Estonian ID card!"
