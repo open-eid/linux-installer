@@ -65,7 +65,7 @@ add_key() {
   keystring="0xC6C83D68 'RIA Software Signing Key <signing@ria.ee>'"
   echo "Adding key to trusted key set (apt-key add)"
   echo "$keystring"
-  echo "$RIA_KEY" | sudo apt-key add -
+  echo "$RIA_KEY" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/ria-repository.gpg > /dev/null
 }
 
 test_sudo() {
