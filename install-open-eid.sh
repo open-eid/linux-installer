@@ -120,7 +120,8 @@ test_sudo
 # 18.04     bionic  LTS   2023-04
 # 20.04     focal   LTS   2025-04
 # 20.10     groovy   -   2021-07
-LATEST_SUPPORTED_UBUNTU_CODENAME='groovy'
+# 21.04     hirsute   -   2022-01
+LATEST_SUPPORTED_UBUNTU_CODENAME='hirsute'
 
 # check if Debian or Ubuntu
 distro=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
@@ -153,7 +154,7 @@ case $distro in
         utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        bionic|focal|groovy)
+        bionic|focal|groovy|hirsute)
           add_repository $codename
           ;;
         *)
