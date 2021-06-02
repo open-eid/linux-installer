@@ -119,7 +119,6 @@ test_sudo
 # version   name    LTS   supported until
 # 18.04     bionic  LTS   2023-04
 # 20.04     focal   LTS   2025-04
-# 20.10     groovy   -   2021-07
 # 21.04     hirsute   -   2022-01
 LATEST_SUPPORTED_UBUNTU_CODENAME='hirsute'
 
@@ -151,7 +150,7 @@ case $distro in
          *) ;;
       esac
       case $codename in
-        utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan)
+        utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
         bionic|focal|groovy|hirsute)
