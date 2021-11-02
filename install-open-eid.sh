@@ -120,7 +120,8 @@ test_sudo
 # 18.04     bionic  LTS   2023-04
 # 20.04     focal   LTS   2025-04
 # 21.04     hirsute   -   2022-01
-LATEST_SUPPORTED_UBUNTU_CODENAME='hirsute'
+# 21.10     impish    -   2022-07
+LATEST_SUPPORTED_UBUNTU_CODENAME='impish'
 
 # check if Debian or Ubuntu
 distro=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
@@ -153,7 +154,7 @@ case $distro in
         utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        bionic|focal|groovy|hirsute)
+        bionic|focal|hirsute|impish)
           add_repository $codename
           ;;
         *)
