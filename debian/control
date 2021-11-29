@@ -14,21 +14,21 @@ Breaks:
  estonianidcard
 Architecture: all
 Depends:
- chrome-token-signing,
  firefox-pkcs11-loader,
+ web-eid,
  qdigidoc4,
  libnss3-tools,
  ${misc:Depends}
 Recommends:
  libdigidocpp-tools
 Suggests:
- chrome-token-signing-policy
+ web-eid-chrome-policy
 Description: This is eID Software metapackage
  This package does not contain anything itself, it's a metapackage that will
  pull in packages required for using the eID Software on the desktop:
  .
- chrome-token-signing - Chrome / Firefox digital signature plugin
  firefox-pkcs11-loader - Firefox PKCS#11 module loader
+ web-eid - new Chrome / Firefox digital signature plugin
  qdigidoc4 - Estonian digital signing and ID card management application
  .
  Change Log (in English): https://www.id.ee/en/article/id-tarkvara-versioonide-info-release-notes/
