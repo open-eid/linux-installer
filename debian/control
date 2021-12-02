@@ -8,10 +8,6 @@ Standards-Version: 3.9.8
 Homepage: https://www.ria.ee
 
 Package: open-eid
-Replaces:
- estonianidcard
-Breaks:
- estonianidcard
 Architecture: all
 Depends:
  firefox-pkcs11-loader,
@@ -21,8 +17,6 @@ Depends:
  ${misc:Depends}
 Recommends:
  libdigidocpp-tools
-Suggests:
- web-eid-chrome-policy
 Description: This is eID Software metapackage
  This package does not contain anything itself, it's a metapackage that will
  pull in packages required for using the eID Software on the desktop:
