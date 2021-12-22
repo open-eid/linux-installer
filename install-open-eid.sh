@@ -119,7 +119,6 @@ test_sudo
 # version   name    LTS   supported until
 # 18.04     bionic  LTS   2023-04
 # 20.04     focal   LTS   2025-04
-# 21.04     hirsute   -   2022-01
 # 21.10     impish    -   2022-07
 LATEST_SUPPORTED_UBUNTU_CODENAME='impish'
 
@@ -151,10 +150,10 @@ case $distro in
          *) ;;
       esac
       case $codename in
-        utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy)
+        utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        bionic|focal|hirsute|impish)
+        bionic|focal|impish)
           add_repository $codename
           ;;
         *)
