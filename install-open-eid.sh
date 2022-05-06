@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # This script configures .deb based Linux repositories
 # License: public domain
 # Script https://github.com/open-eid/linux-installer
@@ -95,7 +95,7 @@ make_install() {
 }
 
 make_fail() {
-  echo -e "$1"
+  echo "$1"
   exit 3
 }
 
@@ -215,4 +215,4 @@ make_install open-eid
 
 # Configure Chrome PKCS11 driver for current user, /etc/xdg/autstart/ will init other users on next logon
 /usr/bin/esteid-update-nssdb
-echo -e "\n\nThank you for using Estonian ID card!"
+echo "\n\nThank you for using Estonian ID card!"
