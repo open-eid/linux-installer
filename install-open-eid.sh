@@ -120,7 +120,8 @@ test_sudo
 # 18.04     bionic  LTS   2023-04
 # 20.04     focal   LTS   2025-04
 # 21.10     impish    -   2022-07
-LATEST_SUPPORTED_UBUNTU_CODENAME='impish'
+# 22.04     jammy   LTS   2027-04
+LATEST_SUPPORTED_UBUNTU_CODENAME='jammy'
 
 # check if Debian or Ubuntu
 distro=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
@@ -153,7 +154,7 @@ case $distro in
         utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        bionic|focal|impish)
+        bionic|focal|impish|jammy)
           add_repository $codename
           ;;
         *)
@@ -194,7 +195,7 @@ case $distro in
         artful|cosmic|disco|eoan)
           make_fail "Pop!_OS $codename is not officially supported"
           ;;
-        bionic|focal)
+        bionic|focal|jammy)
           make_warn "Pop!_OS $codename is not officially supported"
           add_repository $codename
           ;;
