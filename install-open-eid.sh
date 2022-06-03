@@ -215,4 +215,5 @@ make_install open-eid
 
 # Configure Chrome PKCS11 driver for current user, /etc/xdg/autstart/ will init other users on next logon
 /usr/bin/esteid-update-nssdb
-echo "\n\nThank you for using Estonian ID card!"
+echo 
+echo "Thank you for using Estonian ID card!"
