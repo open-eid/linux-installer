@@ -63,9 +63,9 @@ K2czbpReKw==
 add_key() {
   # keystring=`echo "$RIA_KEY" | gpg` # XXX: can't be automated, gpg always creates files on disk
   keystring="0xC6C83D68 'RIA Software Signing Key <signing@ria.ee>'"
-  echo "Adding key to trusted key set (apt-key add)"
+  echo "Adding key to trusted key set"
   echo "$keystring"
-  echo "$RIA_KEY" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/ria-repository.gpg > /dev/null
+  echo "$RIA_KEY" | gpg --dearmor | sudo tee /usr/share/keyrings/ria-repository.gpg > /dev/null
 }
 
 test_sudo() {
@@ -85,7 +85,7 @@ test_root() {
 add_repository() {
   umask 0022
   echo "Adding RIA repository to APT sources list (/etc/apt/sources.list.d/ria-repository.list)"
-  echo "deb https://installer.id.ee/media/ubuntu/ $1 main" | sudo tee /etc/apt/sources.list.d/ria-repository.list
+  echo "deb [signed-by=/usr/share/keyrings/ria-repository.gpg] https://installer.id.ee/media/ubuntu/ $1 main" | sudo tee /etc/apt/sources.list.d/ria-repository.list
 }
 
 make_install() {

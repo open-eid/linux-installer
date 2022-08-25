@@ -11,5 +11,6 @@ sudo dpkg --purge \
   qdigidoc4 qdigidoc qesteidutil qdigidoc-tera open-eid
 sudo rm /etc/apt/sources.list.d/ria-repository.list
 sudo rm /etc/apt/trusted.gpg.d/ria-repository.gpg
+sudo rm /usr/share/keyrings/ria-repository.gpg
 sudo apt-key del 592073D4
 sudo apt-key del C6C83D68

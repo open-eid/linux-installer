@@ -1,3 +1,27 @@
+linux-installer version [22.01](https://github.com/open-eid/linux-installer/releases/tag/v22.01) release notes
+--------------------------------------
+- Include Web-eID support.
+
+linux-installer version [21.02](https://github.com/open-eid/linux-installer/releases/tag/v21.02) release notes
+--------------------------------------
+
+linux-installer version [20.12](https://github.com/open-eid/linux-installer/releases/tag/v20.12) release notes
+--------------------------------------
+- Remove libdigidoc-tools dependency
+
+linux-installer version [20.09](https://github.com/open-eid/linux-installer/releases/tag/v20.09) release notes
+--------------------------------------
+- Remove tera (#63)
+- Install script updates
+
+linux-installer version [20.05](https://github.com/open-eid/linux-installer/releases/tag/v20.05) release notes
+--------------------------------------
+- Install script updates
+
+linux-installer version [20.01](https://github.com/open-eid/linux-installer/releases/tag/v20.01) release notes
+--------------------------------------
+- Use ldconfig command (#60)
+
 linux-installer version [19.10](https://github.com/open-eid/linux-installer/releases/tag/v19.10) release notes
 --------------------------------------
 - Remove IDEMIA PKCS11 from Chrome config
