@@ -140,6 +140,11 @@ case $distro in
           make_warn "Installing from ubuntu-bionic repository"
           add_repository bionic
           ;;
+         bullseye)
+          make_warn "Debian $codename is not officially supported"
+          make_warn "Installing from ubuntu-focal repository"
+          add_repository focal
+          ;;
         *)
           make_fail "Debian $codename is not officially supported"
           ;;
