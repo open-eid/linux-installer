@@ -170,6 +170,10 @@ case $distro in
       ;;
    linuxmint)
       case $release in
+        21*)
+          make_warn "Linuxmint 21 is not officially supported"
+          add_repository jammy
+          ;;
         20*)
           make_warn "Linuxmint 20 is not officially supported"
           add_repository focal
