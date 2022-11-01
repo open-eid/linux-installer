@@ -120,7 +120,8 @@ test_sudo
 # 18.04     bionic  LTS   2023-04
 # 20.04     focal   LTS   2025-04
 # 22.04     jammy   LTS   2027-04
-LATEST_SUPPORTED_UBUNTU_CODENAME='jammy'
+# 22.10     kinetic   -   2023-07
+LATEST_SUPPORTED_UBUNTU_CODENAME='kinetic'
 
 # check if Debian or Ubuntu
 distro=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
@@ -158,7 +159,7 @@ case $distro in
         utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute|impish)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        bionic|focal|jammy)
+        bionic|focal|jammy|kinetic)
           add_repository $codename
           ;;
         *)
