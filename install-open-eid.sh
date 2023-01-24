@@ -70,7 +70,7 @@ add_key() {
 
 test_sudo() {
   if ! command -v sudo>/dev/null; then
-     make_fail "You must have sudo and be in sudo group\nAs root do: apt-get install sudo && adduser $USER sudo"
+     make_fail "You must have sudo and be in sudo group\nAs root do: apt install sudo && adduser $USER sudo"
   fi
 }
 
@@ -89,9 +89,12 @@ add_repository() {
 }
 
 make_install() {
-  echo "Installing software (apt-get update && apt-get install open-eid)"
-  sudo apt-get update
-  sudo apt-get install opensc "$@"
+  echo "Installing software (apt update && apt install open-eid)"
+  sudo apt update
+  sudo apt install opensc "$@"
+  echo "Enabling PCSCD service!"
+  sudo systemctl enable pcscd.socket
+  sudo systemctl start pcscd.socket
 }
 
 make_fail() {
@@ -131,9 +134,9 @@ codename=$(lsb_release -cs)
 case $distro in
    debian)
       make_warn "Debian is not officially supported"
-      echo "### Installing possibly missing https support for APT (apt-get install apt-transport-https)"
+      echo "### Installing possibly missing https support for APT (apt install apt-transport-https)"
       # Debian lacks https support for apt, by default
-      sudo apt-get install apt-transport-https
+      sudo apt install apt-transport-https
       case "$codename" in
         buster)
           make_warn "Debian $codename is not officially supported"
@@ -227,3 +230,8 @@ make_install open-eid
 /usr/bin/esteid-update-nssdb
 echo 
 echo "Thank you for using Estonian ID card!"
+read -p "Would you like read instructions how configuring browsers for using ID-card? (Y/n): " instructions
+case $instructions in
+    [Yy]*|"" ) xdg-open "https://www.id.ee/en/article/ubuntu-id-software-installation-updating-and-removal/#removing-mozilla-firefox";;
+    * ) ;;
+esac
