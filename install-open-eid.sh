@@ -120,7 +120,6 @@ test_root
 test_sudo
 
 # version   name    LTS   supported until
-# 18.04     bionic  LTS   2023-04
 # 20.04     focal   LTS   2025-04
 # 22.04     jammy   LTS   2027-04
 # 22.10     kinetic   -   2023-07
@@ -159,10 +158,10 @@ case $distro in
          *) ;;
       esac
       case $codename in
-        utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute|impish)
+        utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute|impish|bionic)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        bionic|focal|jammy|kinetic)
+        focal|jammy|kinetic)
           add_repository $codename
           ;;
         *)
