@@ -137,11 +137,6 @@ case $distro in
       # Debian lacks https support for apt, by default
       sudo apt install apt-transport-https
       case "$codename" in
-        buster)
-          make_warn "Debian $codename is not officially supported"
-          make_warn "Installing from ubuntu-bionic repository"
-          add_repository bionic
-          ;;
          bullseye)
           make_warn "Debian $codename is not officially supported"
           make_warn "Installing from ubuntu-focal repository"
@@ -174,27 +169,23 @@ case $distro in
    linuxmint)
       case $release in
         21*)
-          make_warn "Linuxmint 21 is not officially supported"
+          make_warn "Linux Mint 21 is not officially supported"
           add_repository jammy
           ;;
         20*)
-          make_warn "Linuxmint 20 is not officially supported"
+          make_warn "Linux Mint 20 is not officially supported"
           add_repository focal
           ;;
-        19*)
-          make_warn "LinuxMint 19 is not officially supported"
-          add_repository bionic
-          ;;
         *)
-          make_fail "LinuxMint $release is not officially supported"
+          make_fail "Linux Mint $release is not officially supported"
           ;;
       esac
       ;;
    elementary*os|elementary)
       case $release in
-        5.*)
-          make_warn "Elementary OS 5 is not officially supported"
-          add_repository bionic
+        7*)
+          make_warn "Elementary OS 7 is not officially supported"
+          add_repository jammy
           ;;
         *)
           make_fail "Elementary OS $release is not officially supported"
@@ -203,10 +194,10 @@ case $distro in
       ;;
    pop)
       case $codename in
-        artful|cosmic|disco|eoan)
+        artful|cosmic|disco|eoan|bionic)
           make_fail "Pop!_OS $codename is not officially supported"
           ;;
-        bionic|focal|jammy)
+        focal|jammy)
           make_warn "Pop!_OS $codename is not officially supported"
           add_repository $codename
           ;;
