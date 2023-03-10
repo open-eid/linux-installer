@@ -220,7 +220,7 @@ make_install open-eid
 /usr/bin/esteid-update-nssdb
 echo 
 echo "Thank you for using Estonian ID card!"
-read -p "Would you like read instructions how configuring browsers for using ID-card? (Y/n): " instructions
+read -p "Would you like to read instructions on how to configure browsers for using ID-card? (Y/n): " instructions
 case $instructions in
     [Yy]*|"" ) xdg-open "https://www.id.ee/en/article/ubuntu-id-software-installation-updating-and-removal/#removing-mozilla-firefox";;
     * ) ;;
