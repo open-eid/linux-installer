@@ -142,6 +142,11 @@ case $distro in
           make_warn "Installing from ubuntu-focal repository"
           add_repository focal
           ;;
+         bookworm)
+	 	      make_warn "Debian $codename is not officially supported"
+	 	      make_warn "Installing from ubuntu-kinetic repository"
+	 	      add_repository kinetic
+	 	      ;;
         *)
           make_fail "Debian $codename is not officially supported"
           ;;
