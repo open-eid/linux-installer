@@ -153,13 +153,13 @@ case $distro in
           ;;
       esac
       ;;
-   ubuntu|neon)
+   ubuntu|neon|zorin)
       case $distro in
          neon) make_warn "Neon is not officially supported; assuming that it is equivalent to Ubuntu" ;;
          *) ;;
       esac
       case $codename in
-        utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute|impish|bionic)
+        utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute|impish|bionic|zorin)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
         focal|jammy|kinetic|lunar)
