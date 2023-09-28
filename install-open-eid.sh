@@ -122,7 +122,6 @@ test_sudo
 # version   name    LTS   supported until
 # 20.04     focal   LTS   2025-04
 # 22.04     jammy   LTS   2027-04
-# 22.10     kinetic   -   2023-07
 # 23.04     lunar   -   2024-01
 LATEST_SUPPORTED_UBUNTU_CODENAME='lunar'
 
@@ -145,8 +144,8 @@ case $distro in
           ;;
          bookworm)
 	 	      make_warn "Debian $codename is not officially supported"
-	 	      make_warn "Installing from ubuntu-kinetic repository"
-	 	      add_repository kinetic
+	 	      make_warn "Installing from ubuntu-jammy repository"
+	 	      add_repository jammy
 	 	      ;;
         *)
           make_fail "Debian $codename is not officially supported"
@@ -159,10 +158,10 @@ case $distro in
          *) ;;
       esac
       case $codename in
-        utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute|impish|bionic|zorin)
+        utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute|impish|bionic|zorin|kinetic)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        focal|jammy|kinetic|lunar)
+        focal|jammy|lunar)
           add_repository $codename
           ;;
         *)
