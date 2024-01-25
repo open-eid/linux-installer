@@ -25,17 +25,18 @@
 PATH="$PATH:/sbin"
 NSSDB=$HOME/.pki/nssdb
 MODUTIL="/usr/bin/modutil -force -dbdir sql:$NSSDB"
-LIBS=$(ldconfig -v 2>/dev/null | grep -v ^$'\t' | sed -e s/:.*$//)
+LIBS=$(/usr/sbin/ldconfig -v 2>/dev/null | /usr/bin/grep -v ^$'\t' | /usr/bin/sed -e s/:.*$//)
 PKCS11=onepin-opensc-pkcs11.so
 
-if [ ! -f $NSSDB/cert9.db ]; then
-    echo "Initializing new database"
-    mkdir -p $NSSDB
+if [ ! -f "$NSSDB"/cert9.db ]; then
+    echo "Initializing new database:"
+    mkdir -p "$NSSDB"
+
 fi
 
 delete_pkcs11() {
-    if $MODUTIL -list $1 2>>/dev/null; then
-        $MODUTIL -delete $1
+    if $MODUTIL -list "$1" 2>>/dev/null; then
+        $MODUTIL -delete "$1"
     fi
 }
 
@@ -43,16 +44,23 @@ delete_pkcs11 "idemia-pkcs11"
 
 for DIR in $LIBS; do
     LIB=$DIR/$PKCS11
-    if [ -f $LIB ]; then
+
+    if [ -f "$LIB" ]; then
         echo "Found PKCS#11 library at: $LIB"
-        if grep -q -s library=$LIB $NSSDB/pkcs11.txt; then
-            echo "ID-card support for Google Chrome/Chromium already enabled"
+
+        if /usr/bin/grep -q -s library="$LIB" "$"NSSDB/pkcs11.txt; then
+            echo "ID-card support for Google Chrome/Chromium is already enabled!"
+
         else
-            echo "Enabling ID-card functionality in Google Chrome/Chromium via $LIB"
+            echo "Enabling ID-card functionality for Google Chrome/Chromium via $LIB:"
             delete_pkcs11 "opensc-pkcs11"
-            $MODUTIL -add opensc-pkcs11 -libfile $LIB -mechanisms FRIENDLY
+            $MODUTIL -add opensc-pkcs11 -libfile "$LIB" -mechanisms FRIENDLY
+
         fi
+
         exit
     fi
+
 done
-echo "Can't find $PKCS11"
+
+echo "Can't find $PKCS11!"
