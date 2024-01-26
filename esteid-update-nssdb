@@ -48,7 +48,7 @@ for DIR in $LIBS; do
     if [ -f "$LIB" ]; then
         echo "Found PKCS#11 library at: $LIB"
 
-        if /usr/bin/grep -q -s library="$LIB" "$"NSSDB/pkcs11.txt; then
+        if /usr/bin/grep -q -s library="$LIB" "$NSSDB"/pkcs11.txt; then
             echo "ID-card support for Google Chrome/Chromium is already enabled!"
 
         else
