@@ -75,7 +75,7 @@ make_warn() {
 }
 
 ### Install Estonian ID card software
-# Check for Debian derivative.
+# Check for Debian derivative:
 if ! command -v /usr/bin/lsb_release >/dev/null; then
     make_fail "# Not a Debian/Ubuntu/Kali Linux :("
 
@@ -114,14 +114,12 @@ case $DISTRO in
                 make_warn "Debian Bullseye is not officially supported!"
                 make_warn "Installing from ubuntu-focal repository:"
                 add_repository focal
-
                 ;;
 
             bookworm)
 	 	        make_warn "Debian Bookworm is not officially supported!"
 	 	        make_warn "Installing from ubuntu-kinetic repository:"
 	 	        add_repository kinetic
-
 	 	        ;;
 
             kali-rolling)
@@ -130,23 +128,19 @@ case $DISTRO in
                 # Current version of Kali (2023.4) can use the same repos as Debian Bookworm.
                 make_warn "Installing from ubuntu-kinetic repository:"
                 add_repository kinetic
-
                 ;;
 
             *)
                 make_fail "Debian $CODENAME is not officially supported!"
-
                 ;;
 
         esac
-
         ;;
 
     ubuntu | neon)
         case $DISTRO in
             neon)
                 make_warn "Neon is not officially supported; assuming that it is equivalent to Ubuntu."
-
                 ;;
 
             *)
@@ -157,23 +151,19 @@ case $DISTRO in
         case $CODENAME in
             utopic | vivid | wily | trusty | artful | cosmic | disco | xenial | eoan | groovy | hirsute | impish | bionic)
                 make_fail "Ubuntu $CODENAME is not officially supported!"
-
                 ;;
 
             focal | jammy | kinetic | lunar)
                 add_repository "$CODENAME"
-
                 ;;
 
             *)
                 make_warn "Ubuntu $CODENAME is not officially supported!"
                 make_warn "Trying to install package for Ubuntu ${LATEST_SUPPORTED_UBUNTU_CODENAME}:"
                 add_repository ${LATEST_SUPPORTED_UBUNTU_CODENAME}
-
                 ;;
 
         esac
-
         ;;
 
     linuxmint)
@@ -182,23 +172,19 @@ case $DISTRO in
                 make_warn "Linux Mint 21 is not officially supported!"
                 make_warn "Installing from ubuntu-jammy repository:"
                 add_repository jammy
-
                 ;;
 
             20*)
                 make_warn "Linux Mint 20 is not officially supported"
                 make_warn "Installing from ubuntu-focal repository:"
                 add_repository focal
-
                 ;;
 
             *)
                 make_fail "Linux Mint $RELEASE is not officially supported"
-
                 ;;
 
         esac
-
         ;;
 
     elementary*os | elementary)
@@ -207,23 +193,19 @@ case $DISTRO in
                 make_warn "Elementary OS 7 is not officially supported!"
                 make_warn "Installing from ubuntu-jammy repository:"
                 add_repository jammy
-
                 ;;
 
             *)
                 make_fail "Elementary OS $RELEASE is not officially supported!"
-
                 ;;
 
         esac
-
         ;;
 
     pop)
         case $CODENAME in
             artful | cosmic | disco | eoan | bionic)
                 make_fail "Pop!_OS $CODENAME is not officially supported!"
-
                 ;;
 
             focal | jammy)
@@ -233,23 +215,19 @@ case $DISTRO in
                 # But since $CODENAME is already defined in a safe manner, this shouldn't be too problematic.
                 make_warn "Installing from ubuntu-$(echo $CODENAME | /usr/bin/tr '[:upper:]' '[:lower:]') repository:"
                 add_repository "$CODENAME"
-
                 ;;
 
             *)
                 make_warn "Pop!_OS $CODENAME is not officially supported!"
                 make_warn "Trying to install package for Pop!_OS ${LATEST_SUPPORTED_UBUNTU_CODENAME}:"
                 add_repository ${LATEST_SUPPORTED_UBUNTU_CODENAME}
-
                 ;;
 
       esac
-
       ;;
 
     *)
         make_fail "$DISTRO is not supported :("
-
         ;;
 
 esac
@@ -264,9 +242,8 @@ echo "Thank you for using your Estonian ID card!"
 read -p "Would you like to read instructions on how to configure your browsers to use your ID-card? (Y/n): " instructions
 
 case $instructions in
-    [Yy]*|"" )
+    [Yy]* | "" )
         /usr/bin/xdg-open "https://www.id.ee/en/article/ubuntu-id-software-installation-updating-and-removal/#removing-mozilla-firefox"
-
         ;;
 
     * )
