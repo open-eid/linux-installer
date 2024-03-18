@@ -10,7 +10,6 @@ Homepage: https://www.ria.ee
 Package: open-eid
 Architecture: all
 Depends:
- firefox-pkcs11-loader,
  web-eid,
  qdigidoc4,
  libnss3-tools,
@@ -21,7 +20,6 @@ Description: This is eID Software metapackage
  This package does not contain anything itself, it's a metapackage that will
  pull in packages required for using the eID Software on the desktop:
  .
- firefox-pkcs11-loader - Firefox PKCS#11 module loader
  web-eid - new Chrome / Firefox digital signature plugin
  qdigidoc4 - Estonian digital signing and ID card management application
  .
