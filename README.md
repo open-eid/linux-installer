@@ -12,7 +12,6 @@ A metapackage for Ubuntu/Debian based distributions.
 
 2. Build
 
-        dh_make --createorig --addmissing --defaultless -y -p open-eid_18.6.0.0
         dch --distribution unstable -v 18.6.0.0 'Release'
         dpkg-buildpackage -rfakeroot -us -uc
 
