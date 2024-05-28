@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Configure Chrome PKCS11
-Exec=/usr/bin/esteid-update-nssdb
-NoDisplay=true
-X-GNOME-AutoRestart=true
-X-GNOME-Autostart-Phase=Initialization
