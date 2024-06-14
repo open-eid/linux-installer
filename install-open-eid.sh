@@ -123,7 +123,8 @@ test_sudo
 # 20.04     focal   LTS   2025-04
 # 22.04     jammy   LTS   2027-04
 # 23.10     mantic   -   2024-07
-LATEST_SUPPORTED_UBUNTU_CODENAME='mantic'
+# 24.04     noble   -   2029-04
+LATEST_SUPPORTED_UBUNTU_CODENAME='noble'
 
 # check if Debian or Ubuntu
 distro=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
@@ -161,7 +162,7 @@ case $distro in
         utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute|impish|bionic|zorin|kinetic|lunar)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        focal|jammy|mantic)
+        focal|jammy|mantic|noble)
           add_repository $codename
           ;;
         *)
