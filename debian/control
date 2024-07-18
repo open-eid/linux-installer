@@ -12,7 +12,7 @@ Architecture: all
 Depends:
  web-eid,
  qdigidoc4,
- libnss3-tools,
+ opensc,
  ${misc:Depends}
 Recommends:
  libdigidocpp-tools
