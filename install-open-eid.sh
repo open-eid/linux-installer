@@ -174,6 +174,10 @@ case $distro in
       ;;
    linuxmint)
       case $release in
+        22*)
+          make_warn "Linux Mint 22 is not officially supported"
+          add_repository noble
+          ;;
         21*)
           make_warn "Linux Mint 21 is not officially supported"
           add_repository jammy
