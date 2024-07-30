@@ -92,9 +92,6 @@ make_install() {
   echo "Installing software (apt update && apt install open-eid)"
   sudo apt update
   sudo apt install opensc "$@"
-  echo "Enabling PCSCD service!"
-  sudo systemctl enable pcscd.socket
-  sudo systemctl start pcscd.socket
 }
 
 make_fail() {
@@ -122,8 +119,8 @@ test_sudo
 # version   name    LTS   supported until
 # 20.04     focal   LTS   2025-04
 # 22.04     jammy   LTS   2027-04
-# 23.10     mantic   -   2024-07
-# 24.04     noble   -   2029-04
+# 23.10     mantic   -    2024-07
+# 24.04     noble    -    2029-04
 LATEST_SUPPORTED_UBUNTU_CODENAME='noble'
 
 # check if Debian or Ubuntu
