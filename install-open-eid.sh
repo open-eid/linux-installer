@@ -119,8 +119,9 @@ test_sudo
 # version   name    LTS   supported until
 # 20.04     focal   LTS   2025-04
 # 22.04     jammy   LTS   2027-04
-# 24.04     noble    -    2029-04
-LATEST_SUPPORTED_UBUNTU_CODENAME='noble'
+# 24.04     noble   LTS   2029-04
+# 24.10     oracular -    2025-07
+LATEST_SUPPORTED_UBUNTU_CODENAME='oracular'
 
 # check if Debian or Ubuntu
 distro=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
@@ -158,7 +159,7 @@ case $distro in
         utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute|impish|bionic|zorin|kinetic|lunar|mantic)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        focal|jammy|noble)
+        focal|jammy|noble|oracular)
           add_repository $codename
           ;;
         *)
