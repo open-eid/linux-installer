@@ -19,7 +19,7 @@ jobs:
       run: |
         VERSION=$(date '+%y.%m.0.0')
         dch --distribution `lsb_release -cs` -b -v ${VERSION} "Release ${VERSION}"
-        dpkg-buildpackage -us -uc
+        dpkg-buildpackage -us -uc -d
         mv ../open-eid* .
     - name: Lintian
       run: lintian *.deb
