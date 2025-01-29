@@ -3,8 +3,9 @@ Section: metapackages
 Priority: optional
 Maintainer: ria <info@ria.ee>
 Build-Depends:
- debhelper-compat (= 12)
-Standards-Version: 4.5.1
+ debhelper-compat (= 13)
+Standards-Version: 4.6.1
+Rules-Requires-Root: no
 Homepage: https://www.ria.ee
 
 Package: open-eid
