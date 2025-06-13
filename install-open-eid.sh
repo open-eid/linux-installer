@@ -215,7 +215,7 @@ add_key
 make_install open-eid
 
 # Configure Chrome/Firefox PKCS11 driver for current user, /etc/xdg/autstart/ will init other users on next logon
-/usr/bin/pkcs11-register
+/usr/bin/pkcs11-register --skip-chrome=off --skip-firefox=off
 echo 
 echo "Thank you for using Estonian ID card!"
 read -p "Would you like to read instructions on how to configure browsers for using ID-card? (Y/n): " instructions
