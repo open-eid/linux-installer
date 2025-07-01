@@ -145,7 +145,7 @@ case $distro in
           ;;
       esac
       ;;
-   ubuntu|neon|zorin)
+   ubuntu|neon|zorin|tuxedo)
       case $distro in
          neon) make_warn "Neon is not officially supported; assuming that it is equivalent to Ubuntu" ;;
          *) ;;
