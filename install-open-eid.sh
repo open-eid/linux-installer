@@ -135,11 +135,11 @@ case $distro in
       # Debian lacks https support for apt, by default
       sudo apt install apt-transport-https
       case "$codename" in
-         bookworm)
-	 	      make_warn "Debian $codename is not officially supported"
-	 	      make_warn "Installing from ubuntu-jammy repository"
-	 	      add_repository jammy
-	 	      ;;
+        bookworm)
+          make_warn "Debian $codename is not officially supported"
+          make_warn "Trying to install packages from Ubuntu jammy repository"
+          add_repository jammy
+          ;;
         *)
           make_fail "Debian $codename is not officially supported"
           ;;
@@ -147,8 +147,11 @@ case $distro in
       ;;
    ubuntu|neon|zorin|tuxedo)
       case $distro in
-         neon) make_warn "Neon is not officially supported; assuming that it is equivalent to Ubuntu" ;;
-         *) ;;
+        neon)
+          make_warn "Neon is not officially supported; assuming that it is equivalent to Ubuntu"
+          ;;
+        *)
+          ;;
       esac
       case $codename in
         utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute|impish|bionic|zorin|kinetic|lunar|mantic|focal)
@@ -159,7 +162,7 @@ case $distro in
           ;;
         *)
           make_warn "Ubuntu $codename is not officially supported"
-          make_warn "Trying to install package for Ubuntu ${LATEST_SUPPORTED_UBUNTU_CODENAME}"
+          make_warn "Trying to install packages from Ubuntu ${LATEST_SUPPORTED_UBUNTU_CODENAME} repository"
           add_repository ${LATEST_SUPPORTED_UBUNTU_CODENAME}
           ;;
       esac
@@ -168,10 +171,12 @@ case $distro in
       case $release in
         22*)
           make_warn "Linux Mint 22 is not officially supported"
+          make_warn "Trying to install packages from Ubuntu noble repository"
           add_repository noble
           ;;
         21*)
           make_warn "Linux Mint 21 is not officially supported"
+          make_warn "Trying to install packages from Ubuntu jammy repository"
           add_repository jammy
           ;;
         *)
@@ -183,6 +188,7 @@ case $distro in
       case $release in
         7*)
           make_warn "Elementary OS 7 is not officially supported"
+          make_warn "Trying to install packages from Ubuntu jammy repository"
           add_repository jammy
           ;;
         *)
@@ -197,11 +203,12 @@ case $distro in
           ;;
         jammy)
           make_warn "Pop!_OS $codename is not officially supported"
+          make_warn "Trying to install packages from Ubuntu $codename repository"
           add_repository $codename
           ;;
         *)
           make_warn "Pop!_OS $codename is not officially supported"
-          make_warn "Trying to install package for Pop!_OS ${LATEST_SUPPORTED_UBUNTU_CODENAME}"
+          make_warn "Trying to install packages from Ubuntu ${LATEST_SUPPORTED_UBUNTU_CODENAME} repository"
           add_repository ${LATEST_SUPPORTED_UBUNTU_CODENAME}
           ;;
       esac
