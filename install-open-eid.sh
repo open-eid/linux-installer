@@ -135,6 +135,11 @@ case $distro in
       # Debian lacks https support for apt, by default
       sudo apt install apt-transport-https
       case "$codename" in
+        trixie)
+          make_warn "Debian $codename is not officially supported"
+          make_warn "Trying to install packages from Ubuntu plucky repository"
+          add_repository plucky
+          ;;
         bookworm)
           make_warn "Debian $codename is not officially supported"
           make_warn "Trying to install packages from Ubuntu jammy repository"
