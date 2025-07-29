@@ -150,10 +150,13 @@ case $distro in
           ;;
       esac
       ;;
-   ubuntu|neon|zorin|tuxedo)
+   ubuntu|neon|zorin|tuxedo|pop)
       case $distro in
-        neon)
-          make_warn "Neon is not officially supported; assuming that it is equivalent to Ubuntu"
+        neon|zorin|tuxedo)
+          make_warn "$distro is not officially supported; assuming that it is equivalent to Ubuntu"
+          ;;
+        pop)
+          make_warn "Pop!_OS is not officially supported; assuming that it is equivalent to Ubuntu"
           ;;
         *)
           ;;
@@ -198,23 +201,6 @@ case $distro in
           ;;
         *)
           make_fail "Elementary OS $release is not officially supported"
-          ;;
-      esac
-      ;;
-   pop)
-      case $codename in
-        artful|cosmic|disco|eoan|bionic|focal)
-          make_fail "Pop!_OS $codename is not officially supported"
-          ;;
-        jammy)
-          make_warn "Pop!_OS $codename is not officially supported"
-          make_warn "Trying to install packages from Ubuntu $codename repository"
-          add_repository $codename
-          ;;
-        *)
-          make_warn "Pop!_OS $codename is not officially supported"
-          make_warn "Trying to install packages from Ubuntu ${LATEST_SUPPORTED_UBUNTU_CODENAME} repository"
-          add_repository ${LATEST_SUPPORTED_UBUNTU_CODENAME}
           ;;
       esac
       ;;
