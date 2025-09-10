@@ -119,7 +119,6 @@ test_sudo
 # version   name    LTS   supported until
 # 22.04     jammy   LTS   2027-04
 # 24.04     noble   LTS   2029-04
-# 24.10     oracular -    2025-07
 # 25.04     plucky -    2026-01
 LATEST_SUPPORTED_UBUNTU_CODENAME='plucky'
 
@@ -162,10 +161,10 @@ case $distro in
           ;;
       esac
       case $codename in
-        utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute|impish|bionic|zorin|kinetic|lunar|mantic|focal)
+        utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute|impish|bionic|zorin|kinetic|lunar|mantic|focal|oracular)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        jammy|noble|oracular|plucky)
+        jammy|noble|plucky)
           add_repository $codename
           ;;
         *)
