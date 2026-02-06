@@ -119,8 +119,8 @@ test_sudo
 # version   name    LTS   supported until
 # 22.04     jammy   LTS   2027-04
 # 24.04     noble   LTS   2029-04
-# 25.04     plucky -    2026-01
-LATEST_SUPPORTED_UBUNTU_CODENAME='plucky'
+# 25.10     questing -    2026-07
+LATEST_SUPPORTED_UBUNTU_CODENAME='questing'
 
 # check if Debian or Ubuntu
 distro=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
@@ -136,8 +136,8 @@ case $distro in
       case "$codename" in
         trixie)
           make_warn "Debian $codename is not officially supported"
-          make_warn "Trying to install packages from Ubuntu plucky repository"
-          add_repository plucky
+          make_warn "Trying to install packages from Ubuntu noble repository"
+          add_repository noble
           ;;
         bookworm)
           make_warn "Debian $codename is not officially supported"
@@ -161,10 +161,10 @@ case $distro in
           ;;
       esac
       case $codename in
-        utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute|impish|bionic|zorin|kinetic|lunar|mantic|focal|oracular)
+        utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute|impish|bionic|zorin|kinetic|lunar|mantic|focal|oracular|plucky)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        jammy|noble|plucky)
+        jammy|noble|questing)
           add_repository $codename
           ;;
         *)
