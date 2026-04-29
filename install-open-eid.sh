@@ -211,6 +211,14 @@ esac
 add_key
 make_install open-eid
 
+# Browsers may store config in XDG locations unknown to pkcs11-register; create symlinks so it can find them
+if [ -d "$HOME/.local/share/pki" ] && [ ! -e "$HOME/.pki" ]; then
+    ln -s "$HOME/.local/share/pki" "$HOME/.pki"
+fi
+if [ -d "$HOME/.config/mozilla" ] && [ ! -e "$HOME/.mozilla" ]; then
+    ln -s "$HOME/.config/mozilla" "$HOME/.mozilla"
+fi
+
 # Configure Chrome/Firefox PKCS11 driver for current user, /etc/xdg/autstart/ will init other users on next logon
 /usr/bin/pkcs11-register --skip-chrome=off --skip-firefox=off
 echo 
