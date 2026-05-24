@@ -105,7 +105,52 @@ make_warn() {
   read -r dummy
 }
 
+# Arch Linux: install the Estonian ID-card stack from the official repos
+# (opensc/pcsclite/ccid/pcsc-tools) and from the AUR (qdigidoc4 and the
+# web-eid native messaging host + browser helpers).
+arch_install() {
+  echo "### Detected Arch Linux (or derivative)"
+  aur_helper=""
+  for h in yay paru pikaur trizen; do
+    if command -v "$h" >/dev/null 2>&1; then
+      aur_helper="$h"
+      break
+    fi
+  done
+  if [ -z "$aur_helper" ]; then
+    make_fail "An AUR helper (yay, paru, pikaur or trizen) is required to install qdigidoc4 and web-eid from the AUR.\nInstall one and re-run this script."
+  fi
+  echo "Using AUR helper: $aur_helper"
+  echo "### Installing smartcard middleware from official Arch repositories"
+  sudo pacman -S --needed --noconfirm opensc pcsclite ccid pcsc-tools
+  echo "### Installing Estonian eID applications from the AUR"
+  "$aur_helper" -S --needed qdigidoc4 web-eid-native web-eid-chrome web-eid-firefox
+  echo "### Enabling the pcscd smartcard daemon"
+  sudo systemctl enable --now pcscd.socket
+  echo
+  echo "PKCS#11 module installed at /usr/lib/opensc-pkcs11.so"
+  echo "Firefox: Preferences -> Privacy & Security -> Security Devices -> Load (module: /usr/lib/opensc-pkcs11.so)"
+  echo "Chrome/Chromium/Edge: native messaging host registered automatically; install the Web eID extension."
+  echo
+  echo "Thank you for using Estonian ID card!"
+  exit 0
+}
+
 ### Install Estonian ID card software
+
+# Arch Linux support (additive; falls through to the Debian/Ubuntu flow on
+# every other distribution).
+if [ -r /etc/os-release ]; then
+  # shellcheck disable=SC1091
+  . /etc/os-release
+  case " ${ID:-} ${ID_LIKE:-} " in
+    *" arch "*|*" archlinux "*|*" manjaro "*|*" endeavouros "*|*" cachyos "*|*" garuda "*)
+      test_root
+      test_sudo
+      arch_install
+      ;;
+  esac
+fi
 
 # check for Debian derivative.
 if ! command -v lsb_release>/dev/null; then
