@@ -120,7 +120,8 @@ test_sudo
 # 22.04     jammy   LTS   2027-04
 # 24.04     noble   LTS   2029-04
 # 25.10     questing -    2026-07
-LATEST_SUPPORTED_UBUNTU_CODENAME='questing'
+# 26.04     resolute   LTS   2031-05
+LATEST_SUPPORTED_UBUNTU_CODENAME='resolute'
 
 # check if Debian or Ubuntu
 distro=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
@@ -164,7 +165,7 @@ case $distro in
         utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute|impish|bionic|zorin|kinetic|lunar|mantic|focal|oracular|plucky)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        jammy|noble|questing)
+        jammy|noble|questing|resolute)
           add_repository $codename
           ;;
         *)
