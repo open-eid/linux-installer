@@ -1,0 +1,25 @@
+# Maintainer: RIA <info@ria.ee>
+pkgname=open-eid
+pkgver=3.12.0
+pkgrel=1
+pkgdesc="Estonian eID Software metapackage"
+arch=('any')
+url="https://www.ria.ee"
+license=('LGPL-2.1-or-later')
+depends=(
+    'opensc'
+    'pcsclite'
+    'ccid'
+    'qdigidoc4'
+    'web-eid-native'
+)
+optdepends=(
+    'pcsc-tools: PCSC diagnostic tools'
+    'web-eid-chrome: Chrome/Chromium extension bridge'
+    'web-eid-firefox: Firefox extension bridge'
+    'libdigidocpp-tools: libdigidocpp diagnostic tools'
+)
+
+package() {
+    :
+}

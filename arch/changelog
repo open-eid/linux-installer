@@ -1,0 +1,5 @@
+open-eid (3.12.0-1) arch; urgency=low
+
+  * Initial Arch Linux packaging
+
+ -- RIA <info@ria.ee>  Thu, 29 Oct 2015 15:42:56 +0200
