@@ -119,7 +119,6 @@ test_sudo
 # version   name    LTS   supported until
 # 22.04     jammy   LTS   2027-04
 # 24.04     noble   LTS   2029-04
-# 25.10     questing -    2026-07
 # 26.04     resolute   LTS   2031-05
 LATEST_SUPPORTED_UBUNTU_CODENAME='resolute'
 
@@ -162,10 +161,10 @@ case $distro in
           ;;
       esac
       case $codename in
-        utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute|impish|bionic|zorin|kinetic|lunar|mantic|focal|oracular|plucky)
+        utopic|vivid|wily|trusty|artful|cosmic|disco|xenial|eoan|groovy|hirsute|impish|bionic|zorin|kinetic|lunar|mantic|focal|oracular|plucky|questing)
           make_fail "Ubuntu $codename is not officially supported"
           ;;
-        jammy|noble|questing|resolute)
+        jammy|noble|resolute)
           add_repository $codename
           ;;
         *)
