@@ -1,4 +1,7 @@
 #!/bin/bash
+# SPDX-FileCopyrightText: Estonian Information System Authority
+# SPDX-License-Identifier: MIT-0
+
 # This script removes open-eid .deb packages
 
 sudo dpkg --purge \
