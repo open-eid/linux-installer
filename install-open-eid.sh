@@ -1,4 +1,7 @@
 #!/bin/sh
+# SPDX-FileCopyrightText: Estonian Information System Authority
+# SPDX-License-Identifier: LGPL-2.1-or-later
+
 # This script configures .deb based Linux repositories
 # License: public domain
 # Script https://github.com/open-eid/linux-installer
