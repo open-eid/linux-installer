@@ -5,6 +5,9 @@ Ubuntu metapackage
 
 A metapackage for Ubuntu/Debian based distributions.
 
+ * License: LGPL-2.1-or-later
+ * &copy; Estonian Information System Authority
+
 1. Fetch the source
 
         git clone --recursive https://github.com/open-eid/linux-installer
